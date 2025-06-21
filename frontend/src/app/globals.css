@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --secondary: #94a3b8;
+  --accent: #1e293b;
+  --border: #334155;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --card-bg: #1e293b;
+  --header-bg: rgba(15, 23, 42, 0.8);
+  --gradient-from: #1e293b;
+  --gradient-via: #0f172a;
+  --gradient-to: #1e293b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-card-bg: var(--card-bg);
+  --color-header-bg: var(--header-bg);
+  --color-gradient-from: var(--gradient-from);
+  --color-gradient-via: var(--gradient-via);
+  --color-gradient-to: var(--gradient-to);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom components */
+.upload-area {
+  transition: all 0.2s ease-in-out;
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+.progress-gradient {
+  background: linear-gradient(
+    90deg,
+    #60a5fa 0%,
+    #3b82f6 30%,
+    #2563eb 70%,
+    #1e40af 100%
+  );
+}
+
+.upload-area:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.3),
+    0 4px 6px -2px rgba(0, 0, 0, 0.2);
+}
+
+.language-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0.5rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 2.5rem;
+  background-color: var(--card-bg);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.form-card {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  transition: all 0.2s ease-in-out;
+}
+
+.form-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Gradient backgrounds */
+.bg-gradient-custom {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-from) 0%,
+    var(--gradient-via) 50%,
+    var(--gradient-to) 100%
+  );
+}
+
+.bg-header-custom {
+  background: var(--header-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.bg-card-custom {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+}
+
+.text-foreground-custom {
+  color: var(--foreground);
+}
+
+.text-secondary-custom {
+  color: var(--secondary);
+}
+
+.border-custom {
+  border-color: var(--border);
 }
