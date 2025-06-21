@@ -314,17 +314,17 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {formCategories.map((category) => (
               <div
                 key={category.id}
-                className="bg-card-custom rounded-2xl shadow-lg p-8"
+                className="bg-card-custom rounded-2xl shadow-lg p-6"
               >
-                <div className="text-center mb-8">
-                  <h4 className="text-2xl font-bold text-foreground-custom mb-3">
+                <div className="text-center mb-6">
+                  <h4 className="text-xl font-bold text-foreground-custom mb-2">
                     {category.title}
                   </h4>
-                  <p className="text-secondary-custom text-lg">
+                  <p className="text-secondary-custom text-sm">
                     {category.description}
                   </p>
                 </div>
@@ -379,10 +379,11 @@ export default function Home() {
                   </div>
                 ) : (
                   // Regular form categories
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-4">
                     {category.forms.map((form) => (
                       <div
                         key={form.id}
+                        onClick={() => router.push("/fill/1")}
                         className="form-card rounded-xl p-6 transition-all duration-200 cursor-pointer hover:scale-105"
                       >
                         <div className="flex justify-between items-start mb-4">
@@ -421,12 +422,9 @@ export default function Home() {
                             </svg>
                             {form.estimatedTime}
                           </div>
-                          <button
-                            onClick={() => router.push("/fill/1")}
-                            className="text-blue-400 hover:text-blue-300 font-medium text-sm transition-colors"
-                          >
+                          <span className="text-blue-400 font-medium text-sm">
                             Start Form →
-                          </button>
+                          </span>
                         </div>
                       </div>
                     ))}
