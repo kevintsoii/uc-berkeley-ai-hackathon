@@ -173,7 +173,7 @@ export default function Home() {
               <select
                 value={selectedLanguage}
                 onChange={(e) => setSelectedLanguage(e.target.value)}
-                className="language-select w-full px-4 py-4 text-lg border-custom rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="language-select w-full px-4 py-4 text-lg border-custom rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent border-2"
               >
                 {languages.map((lang) => (
                   <option key={lang.code} value={lang.code}>
