@@ -12,7 +12,6 @@ app.include_router(form_router,    prefix="/form",    tags=["form"])
 app.include_router(explain_router, prefix="/explain", tags=["explain"])
 app.include_router(submit_router,  prefix="/submit",  tags=["submit"])
 
-
 if __name__ == "__main__":
     uvicorn.run(
         "main:app",
