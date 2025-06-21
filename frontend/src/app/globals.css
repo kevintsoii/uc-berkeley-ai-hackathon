@@ -46,8 +46,6 @@ body {
 /* Custom components */
 .upload-area {
   transition: all 0.2s ease-in-out;
-  background: var(--card-bg);
-  border-color: var(--border);
 }
 
 .progress-gradient {

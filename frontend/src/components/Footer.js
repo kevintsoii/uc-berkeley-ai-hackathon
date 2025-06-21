@@ -30,14 +30,20 @@ export default function Footer() {
           <div className="flex justify-center space-x-6 text-xs text-secondary-custom">
             <a
               href="#privacy"
-              className="hover:text-blue-600 transition-colors"
+              className="hover:text-blue-600 transition-colors text-white"
             >
               Privacy Policy
             </a>
-            <a href="#terms" className="hover:text-blue-600 transition-colors">
+            <a
+              href="#terms"
+              className="hover:text-blue-600 transition-colors text-white"
+            >
               Terms of Service
             </a>
-            <a href="#help" className="hover:text-blue-600 transition-colors">
+            <a
+              href="#help"
+              className="hover:text-blue-600 transition-colors text-white"
+            >
               Help Center
             </a>
           </div>

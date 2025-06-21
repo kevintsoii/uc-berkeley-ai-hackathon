@@ -26,34 +26,85 @@ export default function Home() {
     { code: "ja", name: "Japanese", native: "日本語" },
   ];
 
-  const sampleForms = [
+  const formCategories = [
     {
       id: 1,
-      title: "Form I-485",
-      description: "Application to Register Permanent Residence",
-      difficulty: "Advanced",
-      estimatedTime: "45-60 min",
+      title: "Family-Based Immigrants",
+      description:
+        "Forms for family members of U.S. citizens and permanent residents",
+      forms: [
+        {
+          id: 1,
+          title: "Form I-130",
+          description: "Petition for Alien Relative",
+          difficulty: "Beginner",
+          estimatedTime: "30-45 min",
+        },
+        {
+          id: 2,
+          title: "Form I-485",
+          description: "Application to Adjust Status to Permanent Resident",
+          difficulty: "Intermediate",
+          estimatedTime: "45-60 min",
+        },
+      ],
     },
     {
       id: 2,
-      title: "Form N-400",
-      description: "Application for Naturalization",
-      difficulty: "Intermediate",
-      estimatedTime: "30-45 min",
+      title: "Employment-Based Immigrants",
+      description: "Forms for employment-based immigration applications",
+      forms: [
+        {
+          id: 3,
+          title: "Form I-140",
+          description: "Immigrant Petition for Alien Workers",
+          difficulty: "Advanced",
+          estimatedTime: "60-90 min",
+        },
+        {
+          id: 4,
+          title: "PERM Labor Certification",
+          description: "Application for Permanent Employment Certification",
+          difficulty: "Advanced",
+          estimatedTime: "90-120 min",
+        },
+        {
+          id: 5,
+          title: "Form I-485",
+          description: "Application to Adjust Status to Permanent Resident",
+          difficulty: "Intermediate",
+          estimatedTime: "45-60 min",
+        },
+      ],
     },
     {
       id: 3,
-      title: "Form I-130",
-      description: "Petition for Alien Relative",
-      difficulty: "Beginner",
-      estimatedTime: "20-30 min",
+      title: "Refugees / Asylees",
+      description: "Forms for asylum seekers and refugees",
+      forms: [
+        {
+          id: 6,
+          title: "Form I-589",
+          description: "Application for Asylum and for Withholding of Removal",
+          difficulty: "Advanced",
+          estimatedTime: "90-120 min",
+        },
+        {
+          id: 7,
+          title: "Form I-485",
+          description: "Application to Adjust Status to Permanent Resident",
+          difficulty: "Intermediate",
+          estimatedTime: "45-60 min",
+        },
+      ],
     },
     {
       id: 4,
-      title: "Form I-765",
-      description: "Application for Employment Authorization",
-      difficulty: "Intermediate",
-      estimatedTime: "25-35 min",
+      title: "Students",
+      description: "Forms and documents for international students",
+      isSpecial: true,
+      specialDescription:
+        "Upload your I-20 form from your school to get started",
     },
   ];
 
@@ -193,10 +244,8 @@ export default function Home() {
             </h3>
 
             <div
-              className={`upload-area border-2 border-dashed rounded-xl p-12 text-center transition-all duration-200 ${
-                dragActive
-                  ? "border-blue-500 bg-blue-900/20"
-                  : "hover:border-blue-400"
+              className={`upload-area border-2 border-dashed border-blue-500 rounded-xl p-12 text-center transition-all duration-200   ${
+                dragActive ? "bg-blue-900/20" : "hover:border-blue-400"
               }`}
               onDragEnter={handleDrag}
               onDragLeave={handleDrag}
@@ -253,80 +302,149 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Sample Forms */}
+        {/* Form Categories */}
         <div className="mb-16">
           <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold text-foreground-custom mb-4">
-              Or Choose from Common Forms
+            <h3 className="text-3xl font-bold text-foreground-custom mb-4 mt-40">
+              Or Choose from Common Form Categories
             </h3>
             <p className="text-lg text-secondary-custom max-w-2xl mx-auto">
-              Start with one of these popular immigration forms. Each comes with
-              guided assistance and voice support.
+              Select your immigration category to find the right forms. Each
+              comes with guided assistance and voice support.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {sampleForms.map((form) => (
+          <div className="space-y-12 max-w-6xl mx-auto">
+            {formCategories.map((category) => (
               <div
-                key={form.id}
-                className="form-card rounded-xl p-6 transition-all duration-200 cursor-pointer"
+                key={category.id}
+                className="bg-card-custom rounded-2xl shadow-lg p-8"
               >
-                <div className="flex justify-between items-start mb-4">
-                  <div>
-                    <h4 className="text-xl font-semibold text-foreground-custom mb-2">
-                      {form.title}
-                    </h4>
-                    <p className="text-secondary-custom text-sm leading-relaxed">
-                      {form.description}
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-end space-y-2">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-medium ${getDifficultyColor(
-                        form.difficulty
-                      )}`}
-                    >
-                      {form.difficulty}
-                    </span>
-                  </div>
+                <div className="text-center mb-8">
+                  <h4 className="text-2xl font-bold text-foreground-custom mb-3">
+                    {category.title}
+                  </h4>
+                  <p className="text-secondary-custom text-lg">
+                    {category.description}
+                  </p>
                 </div>
-                <div className="flex items-center justify-between pt-4 border-t border-custom">
-                  <div className="flex items-center text-sm text-secondary-custom">
-                    <svg
-                      className="w-4 h-4 mr-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    {form.estimatedTime}
+
+                {category.isSpecial ? (
+                  // Special Students section - direct to upload
+                  <div className="text-center">
+                    <div className="bg-blue-900/20 border-2 border-dashed border-blue-500 rounded-xl p-8 max-w-md mx-auto">
+                      <div className="w-16 h-16 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg
+                          className="w-8 h-8 text-blue-400"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                          />
+                        </svg>
+                      </div>
+                      <h5 className="text-lg font-semibold text-foreground-custom mb-2">
+                        I-20 Document
+                      </h5>
+                      <p className="text-secondary-custom mb-4 text-sm">
+                        {category.specialDescription}
+                      </p>
+                      <button
+                        onClick={() =>
+                          document.getElementById("pdf-upload").click()
+                        }
+                        className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                      >
+                        <svg
+                          className="w-5 h-5 mr-2"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                          />
+                        </svg>
+                        Upload I-20 Form
+                      </button>
+                    </div>
                   </div>
-                  <button
-                    onClick={() => router.push("/fill/1")}
-                    className="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors"
-                  >
-                    Start Form →
-                  </button>
-                </div>
+                ) : (
+                  // Regular form categories
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {category.forms.map((form) => (
+                      <div
+                        key={form.id}
+                        className="form-card rounded-xl p-6 transition-all duration-200 cursor-pointer hover:scale-105"
+                      >
+                        <div className="flex justify-between items-start mb-4">
+                          <div>
+                            <h5 className="text-xl font-semibold text-foreground-custom mb-2">
+                              {form.title}
+                            </h5>
+                            <p className="text-secondary-custom text-sm leading-relaxed">
+                              {form.description}
+                            </p>
+                          </div>
+                          <div className="flex flex-col items-end space-y-2">
+                            <span
+                              className={`px-3 py-1 rounded-full text-xs font-medium ${getDifficultyColor(
+                                form.difficulty
+                              )}`}
+                            >
+                              {form.difficulty}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between pt-4 border-t border-custom">
+                          <div className="flex items-center text-sm text-secondary-custom">
+                            <svg
+                              className="w-4 h-4 mr-1"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              />
+                            </svg>
+                            {form.estimatedTime}
+                          </div>
+                          <button
+                            onClick={() => router.push("/fill/1")}
+                            className="text-blue-400 hover:text-blue-300 font-medium text-sm transition-colors"
+                          >
+                            Start Form →
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
         </div>
 
         {/* Features Section */}
+        <h3 className="text-3xl font-bold text-foreground-custom mb-8 text-center mt-40">
+          How FormBridge Helps You
+        </h3>
         <div className="bg-card-custom rounded-2xl shadow-lg p-8 mb-16">
-          <h3 className="text-2xl font-bold text-foreground-custom mb-8 text-center">
-            How FormBridge Helps You
-          </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-blue-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
                   className="w-8 h-8 text-blue-600"
                   fill="none"
@@ -350,7 +468,7 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
                   className="w-8 h-8 text-green-600"
                   fill="none"
@@ -373,7 +491,7 @@ export default function Home() {
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-16 h-16 bg-purple-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
                   className="w-8 h-8 text-purple-600"
                   fill="none"
