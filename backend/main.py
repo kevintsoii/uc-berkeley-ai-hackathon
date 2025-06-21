@@ -1,51 +1,22 @@
-# main.py
-from fastapi import FastAPI, UploadFile, File
-from pydantic import BaseModel
-from typing import List, Optional
+import uvicorn
 
-app = FastAPI()
+from fastapi import FastAPI
+from routes.form_upload import router as form_router
+from routes.explain     import router as explain_router
+from routes.submit      import router as submit_router
 
-# === Models ===
-class FormUploadRequest(BaseModel):
-    form_id: str  # e.g. "I-765"
+app = FastAPI(title="Immigration Form Helper")
 
-class FieldExplainRequest(BaseModel):
-    field_label: str
-    field_question: str
-    language: Optional[str] = "en"
+# mount routers
+app.include_router(form_router,    prefix="/form",    tags=["form"])
+app.include_router(explain_router, prefix="/explain", tags=["explain"])
+app.include_router(submit_router,  prefix="/submit",  tags=["submit"])
 
-class UserResponse(BaseModel):
-    session_id: str
-    field_id: str
-    response: str
 
-# === Endpoints ===
-
-@app.post("/upload-form")
-async def upload_form(req: FormUploadRequest):
-    # TODO: Call Gemini here to analyze form
-    return {"status": "processing", "form_id": req.form_id}
-
-@app.get("/form-schema/{form_id}")
-async def get_form_schema(form_id: str):
-    # TODO: Fetch parsed form schema
-    return {"form_id": form_id, "fields": []}
-
-@app.post("/explain-field")
-async def explain_field(req: FieldExplainRequest):
-    # TODO: Call Groq here and return explanation
-    return {
-        "field": req.field_question,
-        "explanation": "This means ...",
-        "example": "For example ..."
-    }
-
-@app.post("/submit-response")
-async def submit_response(resp: UserResponse):
-    # TODO: Save response to DB or memory
-    return {"status": "saved", "field_id": resp.field_id}
-
-@app.get("/generate-pdf/{session_id}")
-async def generate_pdf(session_id: str):
-    # TODO: Use saved responses to fill out PDF
-    return {"pdf_url": f"/downloads/{session_id}.pdf"}
+if __name__ == "__main__":
+    uvicorn.run(
+        "main:app",
+        host="127.0.0.1",       
+        port=8000,
+        reload=False      
+    )
