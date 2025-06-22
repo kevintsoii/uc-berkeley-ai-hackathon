@@ -242,7 +242,7 @@ export default function FillPage() {
         </div>
         {/* Navigation Buttons - Outside the card */}
         <div
-          className={`flex mt-8 ${
+          className={`flex mt-12 ${
             pageNum > 1 ? "justify-between" : "justify-center"
           }`}
         >
@@ -272,7 +272,7 @@ export default function FillPage() {
           {/* Next Button */}
           <button
             onClick={handleNext}
-            className="flex items-center justify-center space-x-3 text-center w-52 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg mt-12 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="flex items-center justify-center space-x-3 text-center w-52 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <span>
               {pageNum === pageInfo.total_pages ? "Complete" : "Next Field"}
