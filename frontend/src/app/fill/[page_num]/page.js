@@ -253,34 +253,33 @@ export default function FillPage() {
           {/* Right side - Success message and loading */}
           <div className="w-1/2 flex flex-col items-center justify-center p-8">
             <div className="text-center">
-              <div className="w-24 h-24 mx-auto mb-6 bg-green-500 rounded-full flex items-center justify-center">
-                <svg
-                  className="w-12 h-12 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={3}
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
+              <div className="flex items-center justify-center mb-8">
+                <div className="w-8 h-8 mr-3 bg-green-500 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <h1 className="text-2xl font-bold text-foreground-custom">
+                  Form Completed Successfully!
+                </h1>
               </div>
-              <h1 className="text-4xl font-bold text-foreground-custom mb-4">
-                Form Completed Successfully!
-              </h1>
-              <p className="text-xl text-secondary-custom mb-8">
-                Your form has been processed and submitted.
-              </p>
 
               {/* Loading spinner below the message */}
               {isProcessingPdf && (
-                <div className="mb-8">
-                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto"></div>
+                <div className="mb-8 flex flex-col items-center justify-center">
+                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-autogit statu"></div>
                   <p className="mt-4 text-secondary-custom">
-                    Processing additional documents...
+                    Reviewing your finished form...
                   </p>
                 </div>
               )}

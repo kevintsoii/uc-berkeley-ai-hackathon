@@ -167,7 +167,8 @@ async def get_finished_pdf():
     return FileResponse(
         path="finished.pdf",
         media_type="application/pdf",
-        filename="finished.pdf"
+        filename="finished.pdf",
+        headers={"Content-Disposition": "inline; filename=finished.pdf"}
     )
 
 @app.post("/process")
