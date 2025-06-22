@@ -10,6 +10,8 @@ import requests
 from dotenv import load_dotenv
 import os
 import logging
+from deep_translator import GoogleTranslator
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -88,9 +90,16 @@ class AssistantUpdateRequest(BaseModel):
     heading: str
     form_type: str
 
+class LanguageUpdateRequest(BaseModel):
+    language: str
+
 @app.get("/")
 def read_root():
     return {"language": language, "file_name": file_name, "default_form": default_form}
+
+@app.get("/language")
+def get_language():
+    return {"language": language}
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
@@ -118,6 +127,48 @@ async def process_form(request: Request):
         "message": "Form processed successfully"
     }
 
+@app.get("/fill/{page_id}")
+def get_page_info(page_id: str):
+    # Default form fields - in a real app, this could be determined by the uploaded PDF
+    form_fields = [
+        {
+            "id": 1,
+            "field": "First Name",
+            "description": "Please provide your first name as it appears on your official documents.",
+            "type": "text",
+            "required": True,
+        },
+        {
+            "id": 2,
+            "field": "Middle Name",
+            "description": "Please provide your middle name as it appears on your official documents.",
+            "type": "text",
+            "required": False,
+        },
+        {
+            "id": 3,
+            "field": "Last Name",
+            "description": "Please provide your last name as it appears on your official documents.",
+            "type": "text",
+            "required": True,
+        },
+    ]
+    
+    try:
+        page_num = int(page_id)
+        if page_num < 1 or page_num > len(form_fields):
+            raise HTTPException(status_code=404, detail="Page not found")
+        
+        current_field = form_fields[page_num - 1]
+        
+        return {
+            "current_field": current_field,
+            "total_pages": len(form_fields),
+            "current_page": page_num,
+            "progress": (page_num / len(form_fields)) * 100
+        }
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid page ID")
 
 # Update the Vapi Assistant to help with the specific section of the form
 @app.patch("/assistant/{assistant_id}")
@@ -134,6 +185,11 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
         language_name = LANGUAGE_MAPPING.get(request.language.lower(), "English")
         logger.info(f"Converted language code '{request.language}' to '{language_name}'")
         
+        # Translate the first message to the user's language
+        first_message_template = f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {request.form_type} form. What did you want me to explain?"
+        translated_message = GoogleTranslator(source='auto', target=request.language).translate(first_message_template)
+        logger.info(f"Translated first message to '{request.language}': {translated_message}")
+
         payload = {
             "transcriber": {
                 "provider": "google",
@@ -153,10 +209,11 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
                         You are currently helping the user with the section: {request.heading}.
                         '''
             },
-            "firstMessage": f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {request.form_type} form. What did you want me to explain?",
+            "firstMessage": translated_message,
             "endCallMessage": "Have a great day! Let me know if you need any more help.",
             "firstMessageMode": "assistant-speaks-first",
-            "maxDurationSeconds": 43200   
+            "maxDurationSeconds": 43200, 
+            "silenceTimeoutSeconds": 30   
         }
 
         headers = {
@@ -185,6 +242,16 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
         logger.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
+# Update the language of the assistant
+@app.post("/update-language")
+async def update_language(request: LanguageUpdateRequest):
+    global language
+    language = request.language
+    return {
+        "message": f"Language updated to {language}",
+        "language": language
+    }
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)
