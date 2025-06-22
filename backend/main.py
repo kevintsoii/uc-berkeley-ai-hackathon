@@ -118,6 +118,48 @@ async def process_form(request: Request):
         "message": "Form processed successfully"
     }
 
+@app.get("/fill/{page_id}")
+def get_page_info(page_id: str):
+    # Default form fields - in a real app, this could be determined by the uploaded PDF
+    form_fields = [
+        {
+            "id": 1,
+            "field": "First Name",
+            "description": "Please provide your first name as it appears on your official documents.",
+            "type": "text",
+            "required": True,
+        },
+        {
+            "id": 2,
+            "field": "Middle Name",
+            "description": "Please provide your middle name as it appears on your official documents.",
+            "type": "text",
+            "required": False,
+        },
+        {
+            "id": 3,
+            "field": "Last Name",
+            "description": "Please provide your last name as it appears on your official documents.",
+            "type": "text",
+            "required": True,
+        },
+    ]
+    
+    try:
+        page_num = int(page_id)
+        if page_num < 1 or page_num > len(form_fields):
+            raise HTTPException(status_code=404, detail="Page not found")
+        
+        current_field = form_fields[page_num - 1]
+        
+        return {
+            "current_field": current_field,
+            "total_pages": len(form_fields),
+            "current_page": page_num,
+            "progress": (page_num / len(form_fields)) * 100
+        }
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid page ID")
 
 # Update the Vapi Assistant to help with the specific section of the form
 @app.patch("/assistant/{assistant_id}")
