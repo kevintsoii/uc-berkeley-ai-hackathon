@@ -1,0 +1,2043 @@
+{
+  "questions": [
+    {
+      "field_id": "Part1_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Part1_Checkbox[0]",
+          "label": "Initial permission to accept employment",
+          "coords": [
+            61.0,
+            409.002,
+            71.0,
+            419.002
+          ]
+        },
+        {
+          "option_id": "Part1_Checkbox[1]",
+          "label": "Replacement of lost, stolen, or damaged employment authorization document, or correction of my employment authorization document NOT DUE to USCIS error",
+          "coords": [
+            61.0,
+            391.002,
+            71.0,
+            401.002
+          ]
+        },
+        {
+          "option_id": "Part1_Checkbox[2]",
+          "label": "Renewal of my permission to accept employment",
+          "coords": [
+            61.0,
+            246.999,
+            71.0,
+            256.999
+          ]
+        }
+      ],
+      "question": "What is the reason for applying?",
+      "explanation": "Select the option that best describes why you are applying for an Employment Authorization Document (EAD).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line1b_GivenName",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your first name?",
+      "explanation": "Provide your legal first name as it appears on your official documents.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Maria",
+        "Ahmed",
+        "Javier"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line1c_MiddleName",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your middle name?",
+      "explanation": "Provide your legal middle name as it appears on your official documents. If you do not have a middle name, leave this field blank.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Elizabeth",
+        "Khan",
+        "Antonio"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line1a_FamilyName",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your last name?",
+      "explanation": "Provide your legal last name (surname) as it appears on your official documents.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Garcia",
+        "Ali",
+        "Rodriguez"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line3b_GivenName",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your first name?",
+      "explanation": "Provide your legal first name as it appears on your official documents.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Maria",
+        "Ahmed",
+        "Javier"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line3c_MiddleName",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your middle name?",
+      "explanation": "Provide your legal middle name as it appears on your official documents. If you do not have a middle name, leave this field blank.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Elizabeth",
+        "Khan",
+        "Antonio"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line3a_FamilyName",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your last name?",
+      "explanation": "Provide your legal last name (surname) as it appears on your official documents.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Garcia",
+        "Ali",
+        "Rodriguez"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line2b_GivenName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your first name?",
+      "explanation": "Provide your legal first name as it appears on your official documents.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Maria",
+        "Ahmed",
+        "Javier"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line2c_MiddleName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your middle name?",
+      "explanation": "Provide your legal middle name as it appears on your official documents. If you do not have a middle name, leave this field blank.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Elizabeth",
+        "Khan",
+        "Antonio"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line2a_FamilyName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your last name?",
+      "explanation": "Provide your legal last name (surname) as it appears on your official documents.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Garcia",
+        "Ali",
+        "Rodriguez"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "USCISELISAcctNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your USCIS Online Account Number?",
+      "explanation": "If you have a USCIS Online Account, provide the account number. This is not the same as your A-Number.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "IOE1234567890"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "CheckBox1[0]",
+      "input_type": "checkbox_multi",
+      "options": [
+        {
+          "option_id": "CheckBox1[0]",
+          "label": "Yes",
+          "coords": [
+            246.501,
+            529.001,
+            256.501,
+            539.001
+          ]
+        }
+      ],
+      "question": "Have you previously filed Form I-765?",
+      "explanation": "Indicate if you have submitted this form before.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line4a_InCareofName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the 'In Care Of' name?",
+      "explanation": "If someone receives mail on your behalf at this address, provide their name here. Otherwise, leave this field blank.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "John Smith"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line4b_StreetNumberName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your street number and name?",
+      "explanation": "Provide the street number and name of your current physical address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "123 Main St",
+        "456 Oak Ave"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Pt2Line5_Unit",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Pt2Line5_Unit[0]",
+          "label": "Apt",
+          "coords": [
+            102.002,
+            609.996,
+            112.002,
+            619.996
+          ]
+        },
+        {
+          "option_id": "Pt2Line5_Unit[1]",
+          "label": "Ste",
+          "coords": [
+            144.0,
+            609.996,
+            154.0,
+            619.996
+          ]
+        },
+        {
+          "option_id": "Pt2Line5_Unit[2]",
+          "label": "Flr",
+          "coords": [
+            60.001,
+            609.999,
+            70.001,
+            619.999
+          ]
+        }
+      ],
+      "question": "What type of unit is this?",
+      "explanation": "Select the type of unit for your address (Apartment, Suite, or Floor).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt2Line5_AptSteFlrNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your apartment, suite, or floor number?",
+      "explanation": "Provide the number of your apartment, suite, or floor, if applicable.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "1A",
+        "Suite 200",
+        "3rd Floor"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt2Line5_CityOrTown[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your city or town?",
+      "explanation": "Provide the city or town of your current physical address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "New York",
+        "Los Angeles",
+        "Chicago"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Pt2Line5_State[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your state?",
+      "explanation": "Provide the state of your current physical address using the two-letter abbreviation.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "NY",
+        "CA",
+        "IL"
+      ],
+      "format_hint": "Use the two-letter state abbreviation (e.g., CA for California).",
+      "required": true
+    },
+    {
+      "field_id": "Pt2Line5_ZipCode[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your ZIP code?",
+      "explanation": "Provide the ZIP code of your current physical address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "10001",
+        "90210",
+        "60601"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line7_AlienNumber",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your Alien Registration Number (A-Number)?",
+      "explanation": "Provide your A-Number if you have one. This is a unique identification number assigned by the U.S. government.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "A123456789"
+      ],
+      "format_hint": "Starts with 'A' followed by 7 to 9 digits.",
+      "required": false
+    },
+    {
+      "field_id": "Line8_ElisAccountNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your USCIS Online Account Number?",
+      "explanation": "If you have a USCIS Online Account, provide the account number. This is not the same as your A-Number.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "IOE1234567890"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line9_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Line9_Checkbox[0]",
+          "label": "Yes",
+          "coords": [
+            245.999,
+            232.002,
+            255.999,
+            242.002
+          ]
+        },
+        {
+          "option_id": "Line9_Checkbox[1]",
+          "label": "No",
+          "coords": [
+            198.0,
+            232.002,
+            208.0,
+            242.002
+          ]
+        }
+      ],
+      "question": "Have you ever applied for or been issued an Employment Authorization Document (EAD)?",
+      "explanation": "Indicate if you have ever applied for or received an EAD before.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line10_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Line10_Checkbox[0]",
+          "label": "Yes",
+          "coords": [
+            240.001,
+            195.999,
+            250.001,
+            205.999
+          ]
+        },
+        {
+          "option_id": "Line10_Checkbox[1]",
+          "label": "No",
+          "coords": [
+            173.999,
+            195.999,
+            183.999,
+            205.999
+          ]
+        },
+        {
+          "option_id": "Line10_Checkbox[2]",
+          "label": "Male",
+          "coords": [
+            60.001,
+            195.999,
+            70.001,
+            205.999
+          ]
+        },
+        {
+          "option_id": "Line10_Checkbox[3]",
+          "label": "Female",
+          "coords": [
+            114.001,
+            195.999,
+            124.001,
+            205.999
+          ]
+        }
+      ],
+      "question": "What is your gender?",
+      "explanation": "Select your gender.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line12a_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Line12a_Checkbox[0]",
+          "label": "Yes",
+          "coords": [
+            260.158,
+            112.003,
+            270.158,
+            122.003
+          ]
+        },
+        {
+          "option_id": "Line12a_Checkbox[1]",
+          "label": "No",
+          "coords": [
+            218.16,
+            112.003,
+            228.16,
+            122.003
+          ]
+        }
+      ],
+      "question": "Do you want a Social Security card?",
+      "explanation": "Indicate if you want a new or replacement Social Security card issued to you.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line12b_SSN[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your Social Security Number (SSN)?",
+      "explanation": "If you have a Social Security Number, provide it here.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "XXX-XX-XXXX"
+      ],
+      "format_hint": "Enter the 9-digit number.",
+      "required": false
+    },
+    {
+      "field_id": "Line13_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Line13_Checkbox[0]",
+          "label": "Yes",
+          "coords": [
+            542.157,
+            651.997,
+            552.157,
+            661.997
+          ]
+        },
+        {
+          "option_id": "Line13_Checkbox[1]",
+          "label": "No",
+          "coords": [
+            500.159,
+            651.997,
+            510.159,
+            661.997
+          ]
+        }
+      ],
+      "question": "Have you ever used other names?",
+      "explanation": "Indicate if you have ever used any other names besides your current legal name.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line14_Checkbox_Yes[0]",
+      "input_type": "checkbox_multi",
+      "options": [
+        {
+          "option_id": "Line14_Checkbox_Yes[0]",
+          "label": "Yes",
+          "coords": [
+            500.159,
+            538.002,
+            510.159,
+            548.002
+          ]
+        }
+      ],
+      "question": "Do you want the Social Security Administration (SSA) to issue you a Social Security card?",
+      "explanation": "Indicate if you authorize USCIS to share your information with the SSA to issue you a Social Security card.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line14_Checkbox_No[0]",
+      "input_type": "checkbox_multi",
+      "options": [
+        {
+          "option_id": "Line14_Checkbox_No[0]",
+          "label": "No",
+          "coords": [
+            542.157,
+            538.002,
+            552.157,
+            548.002
+          ]
+        }
+      ],
+      "question": "Do you NOT want the Social Security Administration (SSA) to issue you a Social Security card?",
+      "explanation": "Indicate if you do not authorize USCIS to share your information with the SSA to issue you a Social Security card.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line15b_GivenName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your father's first name?",
+      "explanation": "Provide your father's first name.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Robert",
+        "Mohammed",
+        "Jose"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line15a_FamilyName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your father's last name?",
+      "explanation": "Provide your father's last name (surname).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Smith",
+        "Ali",
+        "Gonzalez"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line16b_GivenName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your mother's first name?",
+      "explanation": "Provide your mother's first name.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Mary",
+        "Fatima",
+        "Maria"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line16a_FamilyName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your mother's last name?",
+      "explanation": "Provide your mother's last name (surname).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Jones",
+        "Khan",
+        "Rodriguez"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line17a_CountryOfBirth[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your country of birth?",
+      "explanation": "Provide the country where you were born.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Mexico",
+        "India",
+        "China"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line17b_CountryOfBirth[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your country of citizenship or nationality?",
+      "explanation": "Provide the country where you are currently a citizen or national.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Mexico",
+        "India",
+        "China"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line19_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Line19_Checkbox[0]",
+          "label": "Male",
+          "coords": [
+            260.158,
+            160.002,
+            270.158,
+            170.002
+          ]
+        },
+        {
+          "option_id": "Line19_Checkbox[1]",
+          "label": "Female",
+          "coords": [
+            218.16,
+            159.857,
+            228.16,
+            169.857
+          ]
+        }
+      ],
+      "question": "What is your gender?",
+      "explanation": "Select your gender.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line19_DOB[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your date of birth?",
+      "explanation": "Provide your date of birth in the format MM/DD/YYYY.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "01/15/1990",
+        "12/01/1985"
+      ],
+      "format_hint": "MM/DD/YYYY",
+      "required": true
+    },
+    {
+      "field_id": "Line18a_CityTownOfBirth[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the city or town of your birth?",
+      "explanation": "Provide the city or town where you were born.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Mexico City",
+        "Mumbai",
+        "Shanghai"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line18b_CityTownOfBirth[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the city or town of your citizenship or nationality?",
+      "explanation": "Provide the city or town associated with your country of citizenship or nationality.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Mexico City",
+        "Mumbai",
+        "Shanghai"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line18c_CountryOfBirth[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your country of birth?",
+      "explanation": "Provide the country where you were born.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Mexico",
+        "India",
+        "China"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line20a_I94Number[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your Form I-94 Arrival-Departure Record Number?",
+      "explanation": "Provide the Admission Number from your Form I-94 Arrival-Departure Record. You can find this number on your I-94 form or retrieve it from the CBP website.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "12345678910"
+      ],
+      "format_hint": "This is an 11-digit number.",
+      "required": false
+    },
+    {
+      "field_id": "Line20b_Passport[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your passport number?",
+      "explanation": "Provide your passport number.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "P12345678"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line20c_TravelDoc[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your travel document number?",
+      "explanation": "If you used a travel document other than a passport to enter the U.S., provide its number here.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "TD123456"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line20d_CountryOfIssuance[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What country issued your passport or travel document?",
+      "explanation": "Provide the country that issued the passport or travel document you used to enter the U.S.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Mexico",
+        "India",
+        "China"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line20e_ExpDate[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the expiration date of your passport or travel document?",
+      "explanation": "Provide the expiration date of the passport or travel document you used to enter the U.S. in the format MM/DD/YYYY.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "01/15/2025",
+        "12/01/2028"
+      ],
+      "format_hint": "MM/DD/YYYY",
+      "required": false
+    },
+    {
+      "field_id": "Line21_DateOfLastEntry[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What was your date of last arrival into the U.S.?",
+      "explanation": "Provide the date you last entered the United States in the format MM/DD/YYYY.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "06/30/2023",
+        "11/01/2022"
+      ],
+      "format_hint": "MM/DD/YYYY",
+      "required": true
+    },
+    {
+      "field_id": "place_entry[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What was the place of your last arrival into the U.S.?",
+      "explanation": "Provide the city and state or port of entry where you last entered the United States.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "New York, NY",
+        "Los Angeles, CA",
+        "Port of Miami"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line23_StatusLastEntry[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What was your status at the time of your last arrival?",
+      "explanation": "Provide the immigration status you had when you last entered the United States (e.g., F-1 student, B-2 visitor, Parolee).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "F-1",
+        "B-2",
+        "Parolee"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line24_CurrentStatus[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your current immigration status?",
+      "explanation": "Provide your current immigration status (e.g., F-1 student, Asylum Applicant, Temporary Protected Status).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "F-1",
+        "Asylum Applicant",
+        "TPS"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line26_SEVISnumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your SEVIS Number?",
+      "explanation": "If you are a student or exchange visitor (typically F-1 or J-1 status), provide your SEVIS (Student and Exchange Visitor Information System) number. This number is on your Form I-20 or DS-2019.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "N0001234567"
+      ],
+      "format_hint": "Starts with 'N' followed by 10 digits.",
+      "required": false
+    },
+    {
+      "field_id": "Line27a_Degree[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your degree?",
+      "explanation": "If you are applying based on a degree, provide the name of the degree.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Master of Science",
+        "Bachelor of Arts"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line27b_Everify[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your employer's E-Verify name?",
+      "explanation": "If your eligibility category requires it, provide your employer's name as enrolled in the E-Verify program.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "ABC Company"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line27c_EverifyIDNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your employer's E-Verify Identification Number or Valid E-Verify Client Company ID?",
+      "explanation": "If your eligibility category requires it, provide your employer's E-Verify ID number.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "123456"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Line28_ReceiptNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the receipt number of your most recent Form I-797 Notice of Action for the underlying eligibility to file Form I-765?",
+      "explanation": "If applicable, provide the receipt number from the USCIS notice related to your underlying immigration status that makes you eligible for an EAD.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "EAC1234567890"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "PtLine29_YesNo",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "PtLine29_YesNo[0]",
+          "label": "Yes",
+          "coords": [
+            500.159,
+            333.998,
+            510.159,
+            343.998
+          ]
+        },
+        {
+          "option_id": "PtLine29_YesNo[1]",
+          "label": "No",
+          "coords": [
+            541.919,
+            333.998,
+            551.919,
+            343.998
+          ]
+        }
+      ],
+      "question": "Have you ever been arrested for or convicted of any crime?",
+      "explanation": "Indicate if you have ever been arrested for or convicted of any crime.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Line30a_ReceiptNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the receipt number of your most recent Form I-797 Notice of Action for the underlying eligibility to file Form I-765?",
+      "explanation": "If applicable, provide the receipt number from the USCIS notice related to your underlying immigration status that makes you eligible for an EAD.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "EAC1234567890"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "PtLine30b_YesNo",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "PtLine30b_YesNo[0]",
+          "label": "Yes",
+          "coords": [
+            500.159,
+            112.0,
+            510.159,
+            122.0
+          ]
+        },
+        {
+          "option_id": "PtLine30b_YesNo[1]",
+          "label": "No",
+          "coords": [
+            541.919,
+            112.0,
+            551.919,
+            122.0
+          ]
+        }
+      ],
+      "question": "Have you ever been arrested for or convicted of any crime?",
+      "explanation": "Indicate if you have ever been arrested for or convicted of any crime.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "section_1[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your eligibility category?",
+      "explanation": "Enter the appropriate eligibility category code for your application. Refer to the form instructions for a list of categories.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "(c)(3)(C)",
+        "(a)(12)",
+        "(c)(8)"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "section_2[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your eligibility category?",
+      "explanation": "Enter the appropriate eligibility category code for your application. Refer to the form instructions for a list of categories.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "(c)(3)(C)",
+        "(a)(12)",
+        "(c)(8)"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "section_3[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your eligibility category?",
+      "explanation": "Enter the appropriate eligibility category code for your application. Refer to the form instructions for a list of categories.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "(c)(3)(C)",
+        "(a)(12)",
+        "(c)(8)"
+      ],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Pt3Line1Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Pt3Line1Checkbox[0]",
+          "label": "I can read and understand English, and I have read and understand every question and instruction in this application and my answer to every question.",
+          "coords": [
+            61.003,
+            529.001,
+            71.003,
+            539.001
+          ]
+        },
+        {
+          "option_id": "Pt3Line1Checkbox[1]",
+          "label": "The interpreter named in Part 4 read to me every question and instruction in this application and my answer to every question, in ______________, a language in which I am fluent, and I understand everything.",
+          "coords": [
+            61.003,
+            571.002,
+            71.003,
+            581.002
+          ]
+        }
+      ],
+      "question": "Select the statement that applies to you regarding your understanding of English and this application.",
+      "explanation": "Choose the option that indicates whether you read and understood the application in English yourself, or if an interpreter assisted you.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Pt3Line1b_Language[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What language did the interpreter use?",
+      "explanation": "If you used an interpreter, provide the language they used to read the application to you.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Spanish",
+        "Mandarin",
+        "Arabic"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Part3_Checkbox[0]",
+      "input_type": "checkbox_multi",
+      "options": [
+        {
+          "option_id": "Part3_Checkbox[0]",
+          "label": "I have filed this application myself.",
+          "coords": [
+            61.0,
+            444.999,
+            71.0,
+            454.999
+          ]
+        }
+      ],
+      "question": "Indicate how this application was prepared.",
+      "explanation": "Check this box if you completed and filed the application yourself.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Pt3Line2_RepresentativeName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the name of the preparer or attorney?",
+      "explanation": "If someone prepared this application for you, provide their full name or the name of the organization.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Immigration Legal Services",
+        "Jane Doe"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt3Line3_DaytimePhoneNumber1[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your daytime phone number?",
+      "explanation": "Provide a phone number where you can be reached during the day.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "123-456-7890"
+      ],
+      "format_hint": "Enter numbers only.",
+      "required": true
+    },
+    {
+      "field_id": "Pt3Line4_MobileNumber1[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your mobile phone number?",
+      "explanation": "Provide your mobile phone number.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "123-456-7890"
+      ],
+      "format_hint": "Enter numbers only.",
+      "required": false
+    },
+    {
+      "field_id": "Pt3Line5_Email[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is your email address?",
+      "explanation": "Provide your email address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "name@example.com"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt3Line7a_Signature[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "Sign here.",
+      "explanation": "Provide your signature.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": true
+    },
+    {
+      "field_id": "Pt3Line7b_DateofSignature[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the date of your signature?",
+      "explanation": "Provide the date you signed the application in the format MM/DD/YYYY.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "06/30/2023"
+      ],
+      "format_hint": "MM/DD/YYYY",
+      "required": true
+    },
+    {
+      "field_id": "Pt4Line6_Checkbox[0]",
+      "input_type": "checkbox_multi",
+      "options": [
+        {
+          "option_id": "Pt4Line6_Checkbox[0]",
+          "label": "I am an attorney or accredited representative and my representation of the applicant in this case extends to this application.",
+          "coords": [
+            61.0,
+            246.999,
+            71.0,
+            256.999
+          ]
+        }
+      ],
+      "question": "Indicate if you are an attorney or accredited representative.",
+      "explanation": "Check this box if you are an attorney or accredited representative filing on behalf of the applicant.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line1b_InterpreterGivenName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the interpreter's first name?",
+      "explanation": "If an interpreter helped you, provide their first name.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Juan",
+        "Aisha"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line1a_InterpreterFamilyName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the interpreter's last name?",
+      "explanation": "If an interpreter helped you, provide their last name (surname).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Perez",
+        "Khan"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line2_InterpreterBusinessorOrg[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the interpreter's business or organization name?",
+      "explanation": "If the interpreter works for a business or organization, provide its name.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Language Services Inc."
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Part4_NameofLanguage[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What language did the interpreter use?",
+      "explanation": "Provide the language the interpreter used to communicate with you.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Spanish",
+        "Mandarin"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line4_InterpreterDaytimeTelephone[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the interpreter's daytime phone number?",
+      "explanation": "Provide a phone number where the interpreter can be reached during the day.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "987-654-3210"
+      ],
+      "format_hint": "Enter numbers only.",
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line5_MobileNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the interpreter's mobile phone number?",
+      "explanation": "Provide the interpreter's mobile phone number.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "987-654-3210"
+      ],
+      "format_hint": "Enter numbers only.",
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line6_Email[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the interpreter's email address?",
+      "explanation": "Provide the interpreter's email address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "interpreter@example.com"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line6a_Signature[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "Interpreter's Signature",
+      "explanation": "The interpreter must sign here.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt4Line6b_DateofSignature[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the date of the interpreter's signature?",
+      "explanation": "Provide the date the interpreter signed in the format MM/DD/YYYY.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "06/30/2023"
+      ],
+      "format_hint": "MM/DD/YYYY",
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line1b_PreparerGivenName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's first name?",
+      "explanation": "If someone prepared this application for you, provide their first name.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Jane",
+        "David"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line1a_PreparerFamilyName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's last name?",
+      "explanation": "If someone prepared this application for you, provide their last name (surname).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Doe",
+        "Miller"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line2_BusinessName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's business or organization name?",
+      "explanation": "If the preparer works for a business or organization, provide its name.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Legal Aid Society"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3a_StreetNumberName[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's street number and name?",
+      "explanation": "Provide the street number and name of the preparer's business or home address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "789 Pine St"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3b_Unit",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Pt5Line3b_Unit[0]",
+          "label": "Ste",
+          "coords": [
+            144.0,
+            627.999,
+            154.0,
+            637.999
+          ]
+        },
+        {
+          "option_id": "Pt5Line3b_Unit[1]",
+          "label": "Flr",
+          "coords": [
+            60.001,
+            627.999,
+            70.001,
+            637.999
+          ]
+        },
+        {
+          "option_id": "Pt5Line3b_Unit[2]",
+          "label": "Apt",
+          "coords": [
+            101.999,
+            628.002,
+            111.999,
+            638.002
+          ]
+        }
+      ],
+      "question": "What type of unit is this?",
+      "explanation": "Select the type of unit for the preparer's address (Apartment, Suite, or Floor).",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3b_AptSteFlrNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's apartment, suite, or floor number?",
+      "explanation": "Provide the number of the preparer's apartment, suite, or floor, if applicable.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Suite 300"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3c_CityOrTown[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's city or town?",
+      "explanation": "Provide the city or town of the preparer's business or home address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Houston"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3d_State[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's state?",
+      "explanation": "Provide the state of the preparer's business or home address using the two-letter abbreviation.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "TX"
+      ],
+      "format_hint": "Use the two-letter state abbreviation (e.g., CA for California).",
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3e_ZipCode[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's ZIP code?",
+      "explanation": "Provide the ZIP code of the preparer's business or home address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "77001"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3f_Province[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's province?",
+      "explanation": "If the preparer's address is outside the U.S., provide the province.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "Ontario"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3g_PostalCode[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's postal code?",
+      "explanation": "If the preparer's address is outside the U.S., provide the postal code.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "M5W 1E6"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line3h_Country[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's country?",
+      "explanation": "Provide the country of the preparer's business or home address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "United States",
+        "Canada"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line4_DaytimePhoneNumber1[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's daytime phone number?",
+      "explanation": "Provide a phone number where the preparer can be reached during the day.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "987-654-3210"
+      ],
+      "format_hint": "Enter numbers only.",
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line5_PreparerFaxNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's fax number?",
+      "explanation": "Provide the preparer's fax number, if applicable.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "987-654-3211"
+      ],
+      "format_hint": "Enter numbers only.",
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line6_Email[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the preparer's email address?",
+      "explanation": "Provide the preparer's email address.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "preparer@example.com"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Part5Line7_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Part5Line7_Checkbox[0]",
+          "label": "I am not an attorney or accredited representative but have prepared this application on behalf of the applicant and with the applicant's consent.",
+          "coords": [
+            61.0,
+            637.001,
+            71.0,
+            647.001
+          ]
+        },
+        {
+          "option_id": "Part5Line7_Checkbox[1]",
+          "label": "I am an attorney or accredited representative and my representation of the applicant in this case extends to this application.",
+          "coords": [
+            61.0,
+            595.0,
+            71.0,
+            605.0
+          ]
+        }
+      ],
+      "question": "Select the statement that describes your role in preparing this application.",
+      "explanation": "Choose the option that indicates whether you are an attorney/accredited representative or another person who prepared the application with the applicant's consent.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Part5Line7b_Checkbox",
+      "input_type": "radio_single",
+      "options": [
+        {
+          "option_id": "Part5Line7b_Checkbox[0]",
+          "label": "Yes",
+          "coords": [
+            79.0,
+            570.999,
+            89.0,
+            580.999
+          ]
+        },
+        {
+          "option_id": "Part5Line7b_Checkbox[1]",
+          "label": "No",
+          "coords": [
+            126.999,
+            570.999,
+            136.999,
+            580.999
+          ]
+        }
+      ],
+      "question": "Did you use an interpreter?",
+      "explanation": "Indicate if you used an interpreter to help you prepare this application.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line8a_Signature[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "Preparer's Signature",
+      "explanation": "The preparer must sign here.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt5Line8b_DateofSignature[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the date of the preparer's signature?",
+      "explanation": "Provide the date the preparer signed in the format MM/DD/YYYY.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "06/30/2023"
+      ],
+      "format_hint": "MM/DD/YYYY",
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line3a_PageNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the page number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the page number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line3b_PartNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the part number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the part number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line3c_ItemNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the item number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the item number within the part of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "14",
+        "29"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line4a_PageNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the page number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the page number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line4b_PartNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the part number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the part number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line4c_ItemNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the item number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the item number within the part of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "14",
+        "29"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line4d_AdditionalInfo",
+      "input_type": "text",
+      "options": [],
+      "question": "Provide additional information here.",
+      "explanation": "Use this space to provide any additional information that is required or relevant to your application.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line5a_PageNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the page number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the page number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line5b_PartNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the part number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the part number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line5c_ItemNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the item number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the item number within the part of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "14",
+        "29"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line5d_AdditionalInfo[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "Provide additional information here.",
+      "explanation": "Use this space to provide any additional information that is required or relevant to your application.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line6a_PageNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the page number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the page number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line6b_PartNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the part number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the part number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line6c_ItemNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the item number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the item number within the part of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "14",
+        "29"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line6d_AdditionalInfo[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "Provide additional information here.",
+      "explanation": "Use this space to provide any additional information that is required or relevant to your application.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line7a_PageNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the page number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the page number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line7b_PartNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the part number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the part number of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "2",
+        "3"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line7c_ItemNumber[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "What is the item number of the additional information?",
+      "explanation": "If you are providing additional information, indicate the item number within the part of the form that the information relates to.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [
+        "14",
+        "29"
+      ],
+      "format_hint": null,
+      "required": false
+    },
+    {
+      "field_id": "Pt6Line7d_AdditionalInfo[0]",
+      "input_type": "text",
+      "options": [],
+      "question": "Provide additional information here.",
+      "explanation": "Use this space to provide any additional information that is required or relevant to your application.",
+      "cultural_notes": null,
+      "translation_notes": null,
+      "examples": [],
+      "format_hint": null,
+      "required": false
+    }
+  ]
+}
