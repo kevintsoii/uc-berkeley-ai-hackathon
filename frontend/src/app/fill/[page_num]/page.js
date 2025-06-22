@@ -20,6 +20,7 @@ export default function FillPage() {
   const [pageInfo, setPageInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
   useTheme(); // Initialize dark mode
 
   // Default form type - in a real app, this would be determined by the uploaded PDF
@@ -50,6 +51,24 @@ export default function FillPage() {
 
     fetchPageInfo();
   }, [pageNum, router]);
+
+  // Fetch language from backend
+  useEffect(() => {
+    const fetchLanguage = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/language");
+        if (response.ok) {
+          const data = await response.json();
+          setSelectedLanguage(data.language);
+        }
+      } catch (err) {
+        console.error("Error fetching language:", err);
+        // Keep default "en" if fetch fails
+      }
+    };
+
+    fetchLanguage();
+  }, []);
 
   const handleVoiceAssistant = () => {
     setIsListening(!isListening);

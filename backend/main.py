@@ -97,6 +97,10 @@ class LanguageUpdateRequest(BaseModel):
 def read_root():
     return {"language": language, "file_name": file_name, "default_form": default_form}
 
+@app.get("/language")
+def get_language():
+    return {"language": language}
+
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
     # Use original filename
