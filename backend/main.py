@@ -90,6 +90,9 @@ class AssistantUpdateRequest(BaseModel):
     heading: str
     form_type: str
 
+class LanguageUpdateRequest(BaseModel):
+    language: str
+
 @app.get("/")
 def read_root():
     return {"language": language, "file_name": file_name, "default_form": default_form}
@@ -235,6 +238,16 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
         logger.error(f"Unexpected error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
+
+# Update the language of the assistant
+@app.post("/update-language")
+async def update_language(request: LanguageUpdateRequest):
+    global language
+    language = request.language
+    return {
+        "message": f"Language updated to {language}",
+        "language": language
+    }
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="127.0.0.1", port=8000, reload=True)

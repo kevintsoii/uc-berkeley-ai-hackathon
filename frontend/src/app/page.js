@@ -148,6 +148,33 @@ export default function Home() {
   const API_BASE_URL =
     process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
 
+  const updateLanguageOnBackend = async (newLanguage) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/update-language`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          language: newLanguage,
+        }),
+      });
+
+      if (response.ok) {
+        console.log(`Language updated to ${newLanguage}`);
+      } else {
+        console.error("Failed to update language on backend");
+      }
+    } catch (error) {
+      console.error("Error updating language:", error);
+    }
+  };
+
+  const handleLanguageChange = (newLanguage) => {
+    setSelectedLanguage(newLanguage);
+    updateLanguageOnBackend(newLanguage);
+  };
+
   const handleDefaultFormClick = async (form) => {
     try {
       const response = await fetch(`${API_BASE_URL}/process`, {
@@ -332,7 +359,7 @@ export default function Home() {
             <div className="relative">
               <select
                 value={selectedLanguage}
-                onChange={(e) => setSelectedLanguage(e.target.value)}
+                onChange={(e) => handleLanguageChange(e.target.value)}
                 className="language-select w-full px-4 py-4 text-lg border-custom rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent border-2"
               >
                 {languages.map((lang) => (
