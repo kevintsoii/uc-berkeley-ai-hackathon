@@ -16,7 +16,7 @@ export const metadata = {
   description:
     "AI-powered assistance for filling out immigration forms with multilingual support and voice guidance",
   icons: {
-    icon: "/favicon.svg",
+    icon: "/logo.png",
   },
 };
 
