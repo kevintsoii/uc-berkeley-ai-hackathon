@@ -14,7 +14,9 @@ import asyncio
 from deep_translator import GoogleTranslator
 import base64
 import os
+from pypdf import PdfReader
 from google import genai
+from pydantic import BaseModel
 from google.genai import types
 
 # Set up logging
@@ -176,12 +178,81 @@ async def process_form(request: Request, background_tasks: BackgroundTasks):
     }
 
 async def process():
-    print('processing')
     global processing, file_name
     if default_form:
-        file_name = "/forms/defualt/" + file_name
+        file_name = "forms/defualt/" + file_name
     else:
         file_name = "uploads/" +file_name
+
+    # read file
+    print("Current working directory:", os.getcwd())
+    reader = PdfReader(file_name)
+    
+    raw_fields = reader.get_fields()
+    full_text = "\n".join(
+        page.extract_text() or ""  # fallback to empty string if extract_text() fails
+        for page in reader.pages
+    )
+    fields = []
+    for name, field in raw_fields.items():
+        field_type = field.get("/FT")
+        if field_type == "/Tx":  # Only include text fields
+            fields.append({
+                "name": name,
+                #"value": str(field.get("/V", "")),
+                #"type": str(field_type),
+                "label": str(field.get("/TU", "")),
+            })
+
+
+    # gemini hydration
+    temp_file = "abc.txt"
+    with open(temp_file, "w") as f:
+        json.dump(fields, f)
+
+    file = await client.aio.files.upload(file=temp_file)
+    file_name = file.name
+    myfile = await client.aio.files.get(name=file_name)
+
+    prompt = f"""
+        You are a helpful assistant for immigration documents, helping foreign migrants fill out forms and understand the instructions.
+        I want you to hydrate each of the form fields with a human label and human description, and return the 
+        full hydrated object in the provided format.
+
+        The form fields with values [name, value, type, label] is attached.
+
+    """
+       # I also have the full text of the pdf form for context:
+       # {full_text}
+
+    class FormField(BaseModel):
+        name: str
+        value: str
+        type: str
+        label: str
+        human_label: str
+        human_description: str
+
+    print('gemini starting')
+    response = await client.aio.models.generate_content(
+        model="gemini-1.5-flash",
+        contents=[
+            prompt, myfile
+        ],
+        config={
+            "response_mime_type": "application/json",
+            "response_schema": list[FormField],
+        },
+    )
+    print('gemini done')
+
+    # 4) Parse & return
+    result = response.text
+    input(result)
+    #result = json.loads(response.text)
+    print(result)
+
+    
     processing = False
     return
 
