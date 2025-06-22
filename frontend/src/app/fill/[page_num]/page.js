@@ -26,6 +26,7 @@ export default function FillPage() {
   const [isFinishing, setIsFinishing] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [isProcessingPdf, setIsProcessingPdf] = useState(true);
+  const [reviewData, setReviewData] = useState(null);
   useTheme(); // Initialize dark mode
 
   // Default form type - in a real app, this would be determined by the uploaded PDF
@@ -128,6 +129,23 @@ export default function FillPage() {
     }
   };
 
+  // Fetch form review from Gemini
+  const fetchFormReview = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/review");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Form review received:", data);
+      setReviewData(data);
+      setIsProcessingPdf(false);
+    } catch (error) {
+      console.error("Error fetching form review:", error);
+      setIsProcessingPdf(false);
+    }
+  };
+
   // Handle escape key for modal
   useEffect(() => {
     const handleEscape = (e) => {
@@ -174,6 +192,9 @@ export default function FillPage() {
 
         // Set finished state to show completion screen
         setIsFinished(true);
+
+        // Start the review process
+        fetchFormReview();
       } catch (error) {
         console.error("Error finishing form:", error);
         setError("Failed to complete form. Please try again.");
@@ -274,13 +295,48 @@ export default function FillPage() {
                 </h1>
               </div>
 
-              {/* Loading spinner below the message */}
+              {/* Loading spinner or review results */}
               {isProcessingPdf && (
                 <div className="mb-8 flex flex-col items-center justify-center">
-                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-autogit statu"></div>
+                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto"></div>
                   <p className="mt-4 text-secondary-custom">
                     Reviewing your finished form...
                   </p>
+                </div>
+              )}
+
+              {!isProcessingPdf && reviewData && (
+                <div className="mb-8 p-6 bg-card-custom rounded-xl border border-custom">
+                  <div className="text-center mb-4">
+                    <div className="text-3xl font-bold text-foreground-custom">
+                      {reviewData.score}/100 {' '}
+                      {reviewData.score >= 90 ? '🌟' : 
+                       reviewData.score >= 80 ? '✨' :
+                       reviewData.score >= 70 ? '👍' :
+                       reviewData.score >= 60 ? '😐' :
+                       '⚠️'}
+                    </div>
+                  </div>
+
+                  <div className="text-center mb-4">
+                    <p className="text-foreground-custom">
+                      {reviewData.review}
+                    </p>
+                  </div>
+
+                  {reviewData.improvements &&
+                    reviewData.improvements.length > 0 && (
+                      <div className="mt-4">
+                        <ul className="text-sm text-secondary-custom space-y-1">
+                          {reviewData.improvements.map((improvement, index) => (
+                            <li key={index} className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>{improvement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                 </div>
               )}
 
