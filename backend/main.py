@@ -363,7 +363,7 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
         
         # Translate the first message to the user's language
         print(file_name)
-        first_message_template = f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')} form. What did you want me to explain?"
+        first_message_template = f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')} form. What did you want me to explain?"
         translated_message = GoogleTranslator(source='auto', target=request.language).translate(first_message_template)
         logger.info(f"Translated first message to '{request.language}': {translated_message}")
 
