@@ -6,6 +6,8 @@ import requests
 from dotenv import load_dotenv
 import os
 import logging
+from deep_translator import GoogleTranslator
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -95,6 +97,11 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
         language_name = LANGUAGE_MAPPING.get(request.language.lower(), "English")
         logger.info(f"Converted language code '{request.language}' to '{language_name}'")
         
+        # Translate the first message to the user's language
+        first_message_template = f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {request.form_type} form. What did you want me to explain?"
+        translated_message = GoogleTranslator(source='auto', target=request.language).translate(first_message_template)
+        logger.info(f"Translated first message to '{request.language}': {translated_message}")
+
         payload = {
             "transcriber": {
                 "provider": "google",
@@ -114,10 +121,11 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
                         You are currently helping the user with the section: {request.heading}.
                         '''
             },
-            "firstMessage": f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {request.form_type} form. What did you want me to explain?",
+            "firstMessage": translated_message,
             "endCallMessage": "Have a great day! Let me know if you need any more help.",
             "firstMessageMode": "assistant-speaks-first",
-            "maxDurationSeconds": 43200   
+            "maxDurationSeconds": 43200, 
+            "silenceTimeoutSeconds": 30   
         }
 
         headers = {
