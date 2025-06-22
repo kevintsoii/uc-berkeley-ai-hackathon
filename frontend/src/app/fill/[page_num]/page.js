@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ValidationModal from "@/components/ValidationModal";
 import { useTheme } from "@/hooks/useTheme";
+import VapiAssistant from "@/components/VapiAssistant";
 
 export default function FillPage() {
   const router = useRouter();
@@ -16,7 +17,22 @@ export default function FillPage() {
   const [isListening, setIsListening] = useState(false);
   const [isProgressing, setIsProgressing] = useState(false);
   const [showValidationModal, setShowValidationModal] = useState(false);
+  const [selectedLanguage, setSelectedLanguage] = useState("en");
   useTheme(); // Initialize dark mode
+
+  // Language options
+  const languages = [
+    { code: "en", name: "English", native: "English" },
+    { code: "es", name: "Spanish", native: "Español" },
+    { code: "zh", name: "Chinese", native: "中文" },
+    { code: "hi", name: "Hindi", native: "हिन्दी" },
+    { code: "ar", name: "Arabic", native: "العربية" },
+    { code: "pt", name: "Portuguese", native: "Português" },
+    { code: "ru", name: "Russian", native: "Русский" },
+    { code: "fr", name: "French", native: "Français" },
+    { code: "de", name: "German", native: "Deutsch" },
+    { code: "ja", name: "Japanese", native: "日本語" },
+  ];
 
   // Form configuration - in a real app, this would come from the uploaded PDF analysis
   const formFields = [
@@ -43,6 +59,9 @@ export default function FillPage() {
   const totalPages = formFields.length;
   const currentField = formFields[pageNum - 1];
   const progress = (pageNum / totalPages) * 100;
+
+  // Default form type - in a real app, this would be determined by the uploaded PDF
+  const formType = "I-130";
 
   // Redirect if page number is invalid
   useEffect(() => {
@@ -155,6 +174,24 @@ export default function FillPage() {
             </p>
           </div>
 
+          {/* Language Selection */}
+          <div className="mb-6">
+            <label className="block text-sm font-medium text-foreground-custom mb-2">
+              Voice Assistant Language
+            </label>
+            <select
+              value={selectedLanguage}
+              onChange={(e) => setSelectedLanguage(e.target.value)}
+              className="w-full px-4 py-3 text-lg border-custom rounded-xl bg-card-custom text-foreground-custom focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              {languages.map((language) => (
+                <option key={language.code} value={language.code}>
+                  {language.native} ({language.name})
+                </option>
+              ))}
+            </select>
+          </div>
+
           {/* Input Section */}
           <div className="space-y-6">
             <div>
@@ -180,6 +217,14 @@ export default function FillPage() {
 
             {/* Voice Assistant Button */}
             <div className="flex justify-center">
+              <VapiAssistant 
+                apiKey="7d157f06-cf48-4f3a-bbc4-610fbbdc4f2f" 
+                assistantId="7cdf2e9e-6bb3-4fb7-9648-4beba2c91a80"
+                language={selectedLanguage}
+                formType={formType}
+                heading={currentField?.name || "General Information"}
+                backendUrl="http://localhost:8000"
+              />
               <button
                 onClick={handleVoiceAssistant}
                 className={`flex items-center space-x-3 px-6 py-3 rounded-xl transition-all duration-200 shadow-sm ${
