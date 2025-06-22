@@ -1,0 +1,503 @@
+[
+    
+    {
+      "name": "form1[0].#subform[0].Pt1Line1a_FamilyName[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 1. A. Family Name (Last Name)",
+      "human_description": "Enter the last name of the individual filing the petition. This applies if an individual, not a company, is filing."
+    },
+    {
+      "name": "form1[0].#subform[0].Pt1Line1b_GivenName[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 1. B. Given Name (First Name)",
+      "human_description": "Enter the first name of the individual filing the petition. This applies if an individual, not a company, is filing."
+    },
+    {
+      "name": "form1[0].#subform[0].Pt1Line1c_MiddleName[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 1. C. Middle Name",
+      "human_description": "Enter the middle name of the individual filing the petition. This applies if an individual, not a company, is filing."
+    },
+    {
+      "name": "form1[0].#subform[0].Line2_CompanyName[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 2. Company or Organization Name",
+      "human_description": "Enter the full legal name of the company or organization filing the petition. This applies if a company or organization is filing, not an individual."
+    },
+    {
+      "name": "form1[0].#subform[0].attyStateBarNumber[0]",
+      "human_label": "Attorney State Bar Number",
+      "human_description": "If an attorney is representing the petitioner, enter their state bar number here. This field is optional if no attorney is involved."
+    },
+    {
+      "name": "form1[0].#subform[0].attyUSCISOnlineNum[0]",
+      "human_label": "Attorney or Accredited Representative USCIS Online Account Number",
+      "human_description": "If an attorney or accredited representative is assisting with this petition, enter their USCIS Online Account Number if they have one."
+    },
+    {
+      "name": "form1[0].#subform[0].#area[1].Pt1Line8_USCISOnlineActNumber[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 6. USCIS Online Account Number",
+      "human_description": "Enter the USCIS Online Account Number, if the person or organization filing this petition has one. This is typically assigned after creating an account on the USCIS website."
+    },
+    {
+      "name": "form1[0].#subform[0].Pt1Line3_TaxNumber[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 4. IRS Employer Identification Number (EIN)",
+      "human_description": "Enter the 9-digit Employer Identification Number (EIN) issued by the IRS. Do not include dashes. This is usually for companies or organizations."
+    },
+    {
+      "name": "form1[0].#subform[0].Line7_SSN[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 5. U.S. Social Security Number (SSN)",
+      "human_description": "Enter the 9-digit U.S. Social Security Number (SSN) if the petitioner has one. Do not include dashes."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6a_InCareofName[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. A. In Care Of Name",
+      "human_description": "If the mailing address is 'in care of' another person or organization, enter their name here."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6b_StreetNumberName[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. B. Street Number and Name",
+      "human_description": "Enter the street number and name of the petitioner's mailing address."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6c_AptSteFlrNumber[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. C. Apartment, Suite or Floor Number",
+      "human_description": "If applicable, enter the apartment, suite, or floor number for the petitioner's mailing address."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6d_CityOrTown[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. D. City or Town",
+      "human_description": "Enter the city or town of the petitioner's mailing address."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6g_PostalCode[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. H. Postal Code",
+      "human_description": "Enter the postal code for the petitioner's mailing address, especially if outside the U.S."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6i_Country[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. I. Country",
+      "human_description": "Enter the country of the petitioner's mailing address."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6f_ZipCode[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. F. Zip Code",
+      "human_description": "Enter the U.S. Zip Code for the petitioner's mailing address. This is for addresses within the United States."
+    },
+    {
+      "name": "form1[0].#subform[0].Line6h_Province[0]",
+      "human_label": "Part 1. Information About the Person or Organization Filing This Petition. 3. G. Province",
+      "human_description": "Enter the province for the petitioner's mailing address, if applicable (e.g., for addresses in Canada)."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2aReceipt[0].Line2a_ReceiptNumber[0]",
+      "human_label": "Part 2. Petition Type. 2. A. Previous Petition Receipt Number",
+      "human_description": "If this petition is being filed to amend a previously submitted petition, enter the receipt number of that prior petition here."
+    },
+    {
+      "name": "form1[0].#subform[1].Pt3Line1a_FamilyName[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 1. A. Family Name (Last Name)",
+      "human_description": "Enter the last name of the person who is the beneficiary of this petition (the alien worker)."
+    },
+    {
+      "name": "form1[0].#subform[1].Pt3Line1b_GivenName[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 1. B. Given Name (First Name)",
+      "human_description": "Enter the first name of the person who is the beneficiary of this petition (the alien worker)."
+    },
+    {
+      "name": "form1[0].#subform[1].Pt3Line1c_MiddleName[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 1. C. Middle Name",
+      "human_description": "Enter the middle name of the person who is the beneficiary of this petition (the alien worker)."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2b_StreetNumberName[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. B. Mailing Address - Street Number and Name",
+      "human_description": "Enter the street number and name for the mailing address of the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2c_AptSteFlrNumber[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. C. Mailing Address - Apartment, Suite or Floor Number",
+      "human_description": "If applicable, enter the apartment, suite, or floor number for the mailing address of the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2d_CityOrTown[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. D. Mailing Address - City or Town",
+      "human_description": "Enter the city or town for the mailing address of the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2h_Province[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. G. Mailing Address - Province",
+      "human_description": "Enter the province for the mailing address of the person for whom you are filing, if applicable (e.g., for addresses in Canada)."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2i_Country[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. I. Mailing Address - Country",
+      "human_description": "Enter the country for the mailing address of the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2f_ZipCode[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. F. Mailing Address - Zip Code",
+      "human_description": "Enter the U.S. Zip Code for the mailing address of the person for whom you are filing. This is for addresses within the United States."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2a_InCareofName[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. A. Mailing Address - In Care Of Name",
+      "human_description": "If the mailing address for the person for whom you are filing is 'in care of' another person or organization, enter their name here."
+    },
+    {
+      "name": "form1[0].#subform[1].Line2g_PostalCode[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 2. H. Mailing Address - Postal Code",
+      "human_description": "Enter the postal code for the mailing address of the person for whom you are filing, especially if outside the U.S."
+    },
+    {
+      "name": "form1[0].#subform[1].Line5_DateOfBirth[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 3. Date of Birth",
+      "human_description": "Enter the date of birth of the person for whom you are filing in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[1].Line6_CityTownOfBirth[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 4. City, Town, or Village of Birth",
+      "human_description": "Enter the city, town, or village where the person for whom you are filing was born."
+    },
+    {
+      "name": "form1[0].#subform[1].Line8_Country[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 6. Country of Birth",
+      "human_description": "Enter the country where the person for whom you are filing was born."
+    },
+    {
+      "name": "form1[0].#subform[1].Line9_Country[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 7. Country of Citizenship or Nationality",
+      "human_description": "Enter the current country of citizenship or nationality for the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line11_Alien[0].Pt3Line8_AlienNumber[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 8. Alien Registration Number (A-Number)",
+      "human_description": "Enter the 9-digit Alien Registration Number (A-Number) if the person for whom you are filing has one. Do not include dashes."
+    },
+    {
+      "name": "form1[0].#subform[1].Line12_SSN[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 9. U.S. Social Security Number (SSN)",
+      "human_description": "Enter the 9-digit U.S. Social Security Number (SSN) if the person for whom you are filing has one. Do not include dashes."
+    },
+    {
+      "name": "form1[0].#subform[1].Line13_DateOArrival[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 10. Date of Last Arrival in the United States",
+      "human_description": "If the person for whom you are filing is currently in the U.S., enter the date of their most recent arrival in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[1].Line14_I94Number[0].Line14a_ArrivalDeparture[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 11. A. Form I-94 Arrival-Departure Record Number",
+      "human_description": "If the person for whom you are filing is in the U.S., enter their Form I-94 Arrival-Departure Record Number. This number can be found on their I-94 record."
+    },
+    {
+      "name": "form1[0].#subform[1].Line14b_Passport[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 12. Passport Number",
+      "human_description": "Enter the passport number of the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line14c_TravelDoc[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 13. Travel Document Number",
+      "human_description": "If applicable, enter the travel document number of the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line14d_CountryOfIssuance[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 14. Country of Issuance for Passport or Travel Document",
+      "human_description": "Enter the country that issued the passport or travel document for the person for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[1].Line14e_ExpDate[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 15. Expiration Date for Passport or Travel Document",
+      "human_description": "Enter the expiration date of the passport or travel document for the person for whom you are filing in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[1].Line14e_ExpDate[1]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 11. B. Expiration Date of Authorized Stay Shown on Form I-94",
+      "human_description": "If the person for whom you are filing is in the U.S., enter the expiration date of their authorized stay as indicated on their Form I-94 in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[1].Line15_CurrentNon[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 11. C. Status on Form I-94",
+      "human_description": "Enter the immigration status of the person for whom you are filing as shown on their Form I-94 (e.g., H1B, F-1, Parolee)."
+    },
+    {
+      "name": "form1[0].#subform[1].Line1a_CityorTown[0]",
+      "human_label": "Part 4. Processing Information. 1. B. City or Town (Visa Processing)",
+      "human_description": "If the person named in Part 3 will apply for a visa abroad, enter the city or town where they will attend the visa interview."
+    },
+    {
+      "name": "form1[0].#subform[1].Line1a_Country[0]",
+      "human_label": "Part 4. Processing Information. 1. B. Country (Visa Processing)",
+      "human_description": "If the person named in Part 3 will apply for a visa abroad, enter the country where they will attend the visa interview."
+    },
+    {
+      "name": "form1[0].#subform[1].Line7_StateProvinceOfBirth[0]",
+      "human_label": "Part 3. Information About the Person for Whom You Are Filing. 5. State or Province of Birth",
+      "human_description": "Enter the state or province where the person for whom you are filing was born, if applicable."
+    },
+    {
+      "name": "form1[0].#subform[2].Line1b_Country[0]",
+      "human_label": "Part 4. Processing Information. 2. B. Alien's Current Country of Residence or Last Country of Permanent Residence Abroad",
+      "human_description": "Enter the country where the alien is currently residing. If they are in the U.S. now, provide their last country of permanent residence abroad."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2a_StreetNumberName[0]",
+      "human_label": "Part 4. Processing Information. 3. A. Foreign Address - Street Number and Name",
+      "human_description": "If a U.S. address was provided in Part 3, enter the street number and name of the person's foreign address."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2b_AptSteFlrNumber[0]",
+      "human_label": "Part 4. Processing Information. 3. B. Foreign Address - Apartment, Suite or Floor Number",
+      "human_description": "If applicable, enter the apartment, suite, or floor number for the person's foreign address."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2c_CityOrTown[0]",
+      "human_label": "Part 4. Processing Information. 3. C. Foreign Address - City or Town",
+      "human_description": "Enter the city or town of the person's foreign address."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2e_Province[0]",
+      "human_label": "Part 4. Processing Information. 3. D. Foreign Address - Province",
+      "human_description": "Enter the province of the person's foreign address, if applicable."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2f_Country[0]",
+      "human_label": "Part 4. Processing Information. 3. F. Foreign Address - Country",
+      "human_description": "Enter the country of the person's foreign address."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2d_PostalCode[0]",
+      "human_label": "Part 4. Processing Information. 3. E. Foreign Address - Postal Code",
+      "human_description": "Enter the postal code of the person's foreign address."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3c_MiddleName2[0]",
+      "human_label": "Part 4. Processing Information. 4. C. Foreign Name (Native Alphabet) - Middle Name",
+      "human_description": "If the person's native alphabet is not Roman letters, type or print their middle name in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3b_GivenName2[0]",
+      "human_label": "Part 4. Processing Information. 4. B. Foreign Name (Native Alphabet) - Given Name (First Name)",
+      "human_description": "If the person's native alphabet is not Roman letters, type or print their first name in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3a_FamilyName2[0]",
+      "human_label": "Part 4. Processing Information. 4. A. Foreign Name (Native Alphabet) - Family Name (Last Name)",
+      "human_description": "If the person's native alphabet is not Roman letters, type or print their last name in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3d_StreetNumberName[0]",
+      "human_label": "Part 4. Processing Information. 5. B. Mailing Address (Native Alphabet) - Street Number and Name",
+      "human_description": "If the person's native alphabet is not Roman letters, type or print their street number and name of their mailing address in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3e_AptSteFlrNumber[0]",
+      "human_label": "Part 4. Processing Information. 5. C. Mailing Address (Native Alphabet) - Apartment, Suite or Floor Number",
+      "human_description": "If the person's native alphabet is not Roman letters, and applicable, type or print their apartment, suite, or floor number for their mailing address in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3f_CityOrTown[0]",
+      "human_label": "Part 4. Processing Information. 5. D. Mailing Address (Native Alphabet) - City or Town",
+      "human_description": "If the person's native alphabet is not Roman letters, type or print their city or town of their mailing address in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3g_PostalCode[0]",
+      "human_label": "Part 4. Processing Information. 5. F. Mailing Address (Native Alphabet) - Postal Code",
+      "human_description": "If the person's native alphabet is not Roman letters, type or print their postal code for their mailing address in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3i_Country[0]",
+      "human_label": "Part 4. Processing Information. 5. G. Mailing Address (Native Alphabet) - Country",
+      "human_description": "If the person's native alphabet is not Roman letters, type or print their country of their mailing address in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line3h_Province[0]",
+      "human_label": "Part 4. Processing Information. 5. E. Mailing Address (Native Alphabet) - Province",
+      "human_description": "If the person's native alphabet is not Roman letters, and applicable, type or print their province for their mailing address in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2a_InCareofName[1]",
+      "human_label": "Part 4. Processing Information. 5. A. Mailing Address (Native Alphabet) - In Care Of Name",
+      "human_description": "If the mailing address for the person you are filing for is 'in care of' another person or organization, and their native alphabet is not Roman letters, type or print the 'in care of' name in their native alphabet."
+    },
+    {
+      "name": "form1[0].#subform[2].Line1c_Explain[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 1. C. Other Type of Petitioner (Explain)",
+      "human_description": "If the petitioner is not an individual, company, or organization listed, select 'Other' and explain the type of petitioner (e.g., Lawful Permanent Resident, U.S. citizen filing on behalf of the alien)."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2a_TypeofBusiness[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 2. Type of Business",
+      "human_description": "If a company or organization is filing this petition, describe the type of business (e.g., technology, healthcare, manufacturing)."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2b_DateEstablished[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 3. Date Established",
+      "human_description": "If a company or organization is filing, enter the date it was established in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2c_NumberofEmployees[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 4. Current Number of U.S. Employees",
+      "human_description": "If a company or organization is filing, enter the current total number of employees working in the United States."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2d_GrossAnnualIncome[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 5. Gross Annual Income",
+      "human_description": "If a company or organization is filing, enter their gross annual income for the most recent fiscal year."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2e_NetAnnualIncome[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 6. Net Annual Income",
+      "human_description": "If a company or organization is filing, enter their net annual income for the most recent fiscal year."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2g_LaborCertification[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 8. Labor Certification Department of Labor (DOL) Case Number",
+      "human_description": "If a labor certification is required, enter the DOL case number assigned to it."
+    },
+    {
+      "name": "form1[0].#subform[2].Line2f[0].Line2f_NAICSCode[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 7. North American Industry Classification System (NAICS) Code",
+      "human_description": "If a company or organization is filing, enter the 6-digit NAICS code that best describes their primary business activity. Do not include dashes."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2i_LaborCertificationDate[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 10. Labor Certification Expiration Date",
+      "human_description": "Enter the expiration date of the Labor Certification in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[3].Line3b_AnnualIncome[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 12. Annual Income (Individual Petitioner)",
+      "human_description": "If an individual is filing this petition, enter their gross annual income."
+    },
+    {
+      "name": "form1[0].#subform[3].Line3a_Occupation[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 11. Occupation (Individual Petitioner)",
+      "human_description": "If an individual is filing this petition, enter their current occupation."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2_SOCCode1[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 2. First 2 Digits of Standard Occupational Classification (SOC) Code",
+      "human_description": "Enter the first two digits of the SOC code that best describes the proposed employment."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2_SOCCode2[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 2. Last 4 Digits of Standard Occupational Classification (SOC) Code",
+      "human_description": "Enter the last four digits of the SOC code that best describes the proposed employment."
+    },
+    {
+      "name": "form1[0].#subform[3].Line1_JobTitle[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 1. Job Title",
+      "human_description": "Enter the official job title for the proposed employment."
+    },
+    {
+      "name": "form1[0].#subform[3].Line3_JobDescription[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 3. Nontechnical Job Description",
+      "human_description": "Provide a brief, non-technical description of the job duties and responsibilities for the proposed employment."
+    },
+    {
+      "name": "form1[0].#subform[3].Line5_Hours[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 5. Number of Hours Per Week",
+      "human_description": "If the position is not full-time, enter the number of hours the person will work per week."
+    },
+    {
+      "name": "form1[0].#subform[3].Line1c_Person1MiddleName[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person One. 1. C. Middle Name",
+      "human_description": "Enter the middle name of the first spouse or child related to the individual for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[3].Line1b_Person1GivenName[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person One. 1. B. Given Name (First Name)",
+      "human_description": "Enter the first name of the first spouse or child related to the individual for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[3].Line1a_Person1FamilyName[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person One. 1. A. Family Name (Last Name)",
+      "human_description": "Enter the family name (last name) of the first spouse or child related to the individual for whom you are filing. This section is for dependent family members."
+    },
+    {
+      "name": "form1[0].#subform[3].Line1d_Person1DateOfBirth[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person One. 2. Date of Birth",
+      "human_description": "Enter the date of birth of the first spouse or child in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[3].Line1e_CountryOfBirth[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person One. 3. Country of Birth",
+      "human_description": "Enter the country of birth of the first spouse or child."
+    },
+    {
+      "name": "form1[0].#subform[3].Line1f_Relationship[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person One. 4. Relationship",
+      "human_description": "Specify the relationship of the first person listed to the primary beneficiary (e.g., spouse, son, daughter)."
+    },
+    {
+      "name": "form1[0].#subform[3].Line8_Wages[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 8. Wages",
+      "human_description": "Enter the amount of wages that will be paid for the proposed employment."
+    },
+    {
+      "name": "form1[0].#subform[3].Line8_Per[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 8. Wages - Per (Specify)",
+      "human_description": "Specify the period for the wages entered in the previous field (e.g., hour, week, month, or year)."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2h_LaborCertification[0]",
+      "human_label": "Part 5. Additional Information About the Petitioner. 9. Labor Certification Department of Labor (DOL) Filing Date",
+      "human_description": "Enter the filing date of the Labor Certification with the Department of Labor in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[3].Line9a_StreetNumberName[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 9. A. Worksite Location - Street Number and Name",
+      "human_description": "If the worksite address is different from the petitioner's address in Part 1, enter the street number and name of the worksite."
+    },
+    {
+      "name": "form1[0].#subform[3].Line9b_AptSteFlrNumber[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 9. B. Worksite Location - Apartment, Suite or Floor Number",
+      "human_description": "If applicable, enter the apartment, suite, or floor number for the worksite location."
+    },
+    {
+      "name": "form1[0].#subform[3].Line9c_CityOrTown[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 9. C. Worksite Location - City or Town",
+      "human_description": "Enter the city or town of the worksite location."
+    },
+    {
+      "name": "form1[0].#subform[3].Line9e_ZipCode[0]",
+      "human_label": "Part 6. Basic Information About the Proposed Employment. 9. E. Worksite Location - Zip Code",
+      "human_description": "Enter the U.S. Zip Code of the worksite location."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2f_Relationship[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Two. 10. Relationship",
+      "human_description": "Specify the relationship of the second person listed to the primary beneficiary (e.g., spouse, son, daughter)."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2c_Person2MiddleName[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Two. 7. C. Middle Name",
+      "human_description": "Enter the middle name of the second spouse or child related to the individual for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2b_Person2GivenName[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Two. 7. B. Given Name (First Name)",
+      "human_description": "Enter the first name of the second spouse or child related to the individual for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2a_Person2FamilyName[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Two. 7. A. Family Name (Last Name)",
+      "human_description": "Enter the family name (last name) of the second spouse or child related to the individual for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2d_DateOfBirth[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Two. 8. Date of Birth",
+      "human_description": "Enter the date of birth of the second spouse or child in MM/DD/YYYY format."
+    },
+    {
+      "name": "form1[0].#subform[3].Line2e_CountryOfBirth[0]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Two. 9. Country of Birth",
+      "human_description": "Enter the country of birth of the second spouse or child."
+    },
+    {
+      "name": "form1[0].#subform[4].Line2c_Person2MiddleName[1]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Three. 13. C. Middle Name",
+      "human_description": "Enter the middle name of the third spouse or child related to the individual for whom you are filing."
+    },
+    {
+      "name": "form1[0].#subform[4].Line2b_Person2GivenName[1]",
+      "human_label": "Part 7. Information About the Spouse and All Children. Person Three. 13. B. Given Name (First Name)",
+      "human_description": "Enter the first name of the third spouse or child related to the individual for whom you are filing."
+    }
+  ]
