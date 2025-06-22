@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, File, UploadFile, Request
+from fastapi import FastAPI, HTTPException, File, UploadFile, Request, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
@@ -10,6 +10,7 @@ import requests
 from dotenv import load_dotenv
 import os
 import logging
+import asyncio
 from deep_translator import GoogleTranslator
 
 
@@ -34,6 +35,7 @@ app.add_middleware(
 language = "en"
 file_name = "form.pdf"
 default_form = False
+processing = False
 
 # Create upload directory
 os.makedirs("uploads", exist_ok=True)
@@ -84,6 +86,35 @@ LANGUAGE_MAPPING = {
     "uk": "Ukrainian"
 }
 
+
+    # Default form fields - in a real app, this could be determined by the uploaded PDF
+form_fields = [
+    {
+        "id": 1,
+        "field": "First Name",
+        "description": "Please provide your first name as it appears on your official documents.",
+        "type": "text",
+        "required": True,
+        "value": "",
+    },
+    {
+        "id": 2,
+        "field": "Middle Name",
+        "description": "Please provide your middle name as it appears on your official documents.",
+        "type": "text",
+        "required": False,
+        "value": "",
+    },
+    {
+        "id": 3,
+        "field": "Last Name",
+        "description": "Please provide your last name as it appears on your official documents.",
+        "type": "text",
+        "required": True,
+        "value": "",
+    },
+]
+
 # Pydantic model for request validation
 class AssistantUpdateRequest(BaseModel):
     language: str
@@ -92,6 +123,9 @@ class AssistantUpdateRequest(BaseModel):
 
 class LanguageUpdateRequest(BaseModel):
     language: str
+
+class FieldValueRequest(BaseModel):
+    value: str
 
 @app.get("/")
 def read_root():
@@ -116,43 +150,40 @@ async def upload_file(file: UploadFile = File(...)):
     }
 
 @app.post("/process")
-async def process_form(request: Request):
-    global language, file_name, default_form
+async def process_form(request: Request, background_tasks: BackgroundTasks):
+    global language, file_name, default_form, processing
     data = await request.json()
     language = data.get("language", "en")
     file_name = data.get("file_name", "form.pdf")
     default_form = data.get("default_form", False)
+    for field in form_fields:
+        field["value"] = ""
+
+    processing = True
+    
+    # Start background processing task
+    # run the process function
+    background_tasks.add_task(process)
 
     return {
-        "message": "Form processed successfully"
+        "message": "Form processing started"
     }
+
+async def process():
+    print('processing')
+    global processing, file_name
+    if default_form:
+        file_name = "/forms/defualt/" + file_name
+    else:
+        file_name = "uploads/" +file_name
+    processing = False
+    return
 
 @app.get("/fill/{page_id}")
 def get_page_info(page_id: str):
-    # Default form fields - in a real app, this could be determined by the uploaded PDF
-    form_fields = [
-        {
-            "id": 1,
-            "field": "First Name",
-            "description": "Please provide your first name as it appears on your official documents.",
-            "type": "text",
-            "required": True,
-        },
-        {
-            "id": 2,
-            "field": "Middle Name",
-            "description": "Please provide your middle name as it appears on your official documents.",
-            "type": "text",
-            "required": False,
-        },
-        {
-            "id": 3,
-            "field": "Last Name",
-            "description": "Please provide your last name as it appears on your official documents.",
-            "type": "text",
-            "required": True,
-        },
-    ]
+    if processing:
+        return {"message": "Form is being processed"}
+    
     
     try:
         page_num = int(page_id)
@@ -169,6 +200,24 @@ def get_page_info(page_id: str):
         }
     except ValueError:
         raise HTTPException(status_code=400, detail="Invalid page ID")
+
+@app.post("/fill/{page_id}")
+def save_field_value(page_id: str, request: FieldValueRequest):
+    try:
+        page_num = int(page_id)
+
+        if page_num < 1 or page_num > len(form_fields):
+            raise HTTPException(status_code=404, detail="Page not found")
+
+        current_field = form_fields[page_num - 1]
+        current_field["value"] = request.value
+
+        return {"message": "Value saved successfully"}
+
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid page ID")
+
+
 
 # Update the Vapi Assistant to help with the specific section of the form
 @app.patch("/assistant/{assistant_id}")

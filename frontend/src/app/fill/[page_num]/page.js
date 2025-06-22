@@ -12,8 +12,10 @@ export default function FillPage() {
   const router = useRouter();
   const params = useParams();
   const [pageNum, setPageNum] = useState(parseInt(params.page_num));
+  const [firstLoad, setFirstLoad] = useState(true);
 
   const [fieldValue, setFieldValue] = useState("");
+  const [originalValue, setOriginalValue] = useState("");
   const [isListening, setIsListening] = useState(false);
   const [isProgressing, setIsProgressing] = useState(false);
   const [showValidationModal, setShowValidationModal] = useState(false);
@@ -28,7 +30,7 @@ export default function FillPage() {
 
   // Fetch page information from backend
   useEffect(() => {
-    const fetchPageInfo = async () => {
+    const fetchPageInfo = async (retryCount = 0) => {
       try {
         setLoading(true);
         setError(null); // Clear previous errors
@@ -41,14 +43,42 @@ export default function FillPage() {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
+        console.log(data);
+
+        // Check if form is still being processed
+        if (firstLoad && data.message === "Form is being processed") {
+          if (retryCount < 10) {
+            // Limit retries to prevent infinite loop
+            console.log(
+              `Form is being processed, retrying in 2 seconds... (attempt ${
+                retryCount + 1
+              }/10)`
+            );
+            setTimeout(() => {
+              fetchPageInfo(retryCount + 1);
+            }, 3000); // Wait 2 seconds before retry
+            return;
+          } else {
+            throw new Error(
+              "Form processing is taking too long. Please try again later."
+            );
+          }
+        }
+
         setPageInfo(data);
-        // Clear field value when moving to a new page
-        setFieldValue("");
+        // Populate field value if it exists and is not empty, otherwise clear it
+        const fieldVal =
+          data.current_field.value && data.current_field.value !== ""
+            ? data.current_field.value
+            : "";
+        setFieldValue(fieldVal);
+        setOriginalValue(fieldVal);
+        setLoading(false);
+        setFirstLoad(false);
       } catch (err) {
         console.error("Error fetching page info:", err);
         setError(err.message);
       } finally {
-        setLoading(false);
         setIsProgressing(false); // Reset progress state
       }
     };
@@ -74,39 +104,25 @@ export default function FillPage() {
     fetchLanguage();
   }, []);
 
-  const handleVoiceAssistant = () => {
-    setIsListening(!isListening);
-    // In a real app, this would trigger voice synthesis or recognition
-    if (!isListening) {
-      // Simulate voice assistance
-      const assistanceText = getVoiceAssistance(currentField?.name);
-      if ("speechSynthesis" in window) {
-        const utterance = new SpeechSynthesisUtterance(assistanceText);
-        utterance.rate = 0.8;
-        utterance.onend = () => setIsListening(false);
-        speechSynthesis.speak(utterance);
-      }
-    } else {
-      // Stop speech if currently speaking
-      if ("speechSynthesis" in window) {
-        speechSynthesis.cancel();
-      }
-    }
-  };
+  // Save field value to backend if changed
+  const saveFieldValue = async (value) => {
+    try {
+      const response = await fetch(`http://localhost:8000/fill/${pageNum}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ value }),
+      });
 
-  const getVoiceAssistance = (fieldName) => {
-    const assistanceMap = {
-      "First Name":
-        "Please enter your first name as it appears on your official documents. This is your given name, not your family name or surname.",
-      "Middle Name":
-        'Enter your middle name if you have one. This field is optional. If you don\'t have a middle name, you can leave this blank or write "N/A".',
-      "Last Name":
-        "Please enter your last name, also known as your family name or surname. This should match exactly with your official documents.",
-    };
-    return (
-      assistanceMap[fieldName] ||
-      `Please enter your ${fieldName.toLowerCase()}.`
-    );
+      if (!response.ok) {
+        console.error("Failed to save field value");
+      } else {
+        console.log(`Saved field value: ${value}`);
+      }
+    } catch (error) {
+      console.error("Error saving field value:", error);
+    }
   };
 
   // Handle escape key for modal
@@ -121,17 +137,22 @@ export default function FillPage() {
     return () => document.removeEventListener("keydown", handleEscape);
   }, [showValidationModal]);
 
-  const handleNext = () => {
-    if (!fieldValue.trim() && pageInfo?.current_field?.required) {
+  const handleNext = async () => {
+    if (
+      pageInfo?.current_field?.required &&
+      (!fieldValue || !fieldValue.trim())
+    ) {
       setShowValidationModal(true);
       return;
     }
 
+    // Save field value if it changed
+    if (fieldValue !== originalValue) {
+      await saveFieldValue(fieldValue);
+    }
+
     // Trigger progress animation
     setIsProgressing(true);
-
-    // Save the current field value (in a real app, this would be stored in state management or API)
-    console.log(`Saving ${pageInfo?.current_field?.field}: ${fieldValue}`);
 
     // Delay navigation to show animation
     setTimeout(() => {
@@ -147,8 +168,13 @@ export default function FillPage() {
     }, 300);
   };
 
-  const handlePrevious = () => {
+  const handlePrevious = async () => {
     if (pageNum > 1) {
+      // Save field value if it changed
+      if (fieldValue !== originalValue) {
+        await saveFieldValue(fieldValue);
+      }
+
       const prevPage = pageNum - 1;
       setPageNum(prevPage);
       // Update URL without triggering navigation
@@ -156,7 +182,10 @@ export default function FillPage() {
     }
   };
 
-  if (loading && pageNum < 1) {
+  console.log(loading);
+  console.log(firstLoad);
+
+  if (loading && firstLoad) {
     return (
       <div className="min-h-screen bg-gradient-custom flex items-center justify-center">
         <div className="text-center">
@@ -183,10 +212,6 @@ export default function FillPage() {
         </div>
       </div>
     );
-  }
-
-  if (!pageInfo) {
-    return <div>Loading...</div>;
   }
 
   return (
@@ -223,6 +248,13 @@ export default function FillPage() {
                 type={pageInfo.current_field.type}
                 value={fieldValue}
                 onChange={(e) => setFieldValue(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleNext();
+                  }
+                }}
+                placeholder={`Enter text...`}
                 className="w-full px-4 py-4 text-lg border-custom rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-card-custom text-foreground-custom"
                 autoFocus
               />
