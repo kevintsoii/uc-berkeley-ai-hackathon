@@ -11,7 +11,10 @@ from dotenv import load_dotenv
 import os
 import logging
 from deep_translator import GoogleTranslator
-
+import base64
+import os
+from google import genai
+from google.genai import types
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -40,6 +43,9 @@ os.makedirs("uploads", exist_ok=True)
 
 VAPI_API_URL = "https://api.vapi.ai/assistant"
 VAPI_API_KEY = os.getenv("VAPI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+client = genai.Client(api_key=GEMINI_API_KEY)
+
 
 # Language code to full language name mapping for Vapi API
 LANGUAGE_MAPPING = {
