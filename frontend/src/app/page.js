@@ -79,6 +79,14 @@ export default function Home() {
           estimatedTime: "45-60 min",
           fileName: "I-485.pdf",
         },
+        {
+          id: 8,
+          title: "Form I-765",
+          description: "Application for Employment Authorization",
+          difficulty: "Beginner",
+          estimatedTime: "30-45 min",
+          fileName: "I-765.pdf",
+        },
       ],
     },
     {

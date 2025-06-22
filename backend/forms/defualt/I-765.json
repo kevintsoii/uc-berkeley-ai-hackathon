@@ -1,0 +1,492 @@
+[
+  {
+    "name": "Line1b_GivenName",
+    "human_label": "What is your first name?",
+    "human_description": "Provide your legal first name as it appears on your official documents."
+  },
+  {
+    "name": "Line1c_MiddleName",
+    "human_label": "What is your middle name?",
+    "human_description": "Provide your legal middle name as it appears on your official documents. If you do not have a middle name, leave this field blank."
+  },
+  {
+    "name": "Line1a_FamilyName",
+    "human_label": "What is your last name?",
+    "human_description": "Provide your legal last name (surname) as it appears on your official documents."
+  },
+  {
+    "name": "Line3b_GivenName",
+    "human_label": "What is your first name?",
+    "human_description": "Provide your legal first name as it appears on your official documents."
+  },
+  {
+    "name": "Line3c_MiddleName",
+    "human_label": "What is your middle name?",
+    "human_description": "Provide your legal middle name as it appears on your official documents. If you do not have a middle name, leave this field blank."
+  },
+  {
+    "name": "Line3a_FamilyName",
+    "human_label": "What is your last name?",
+    "human_description": "Provide your legal last name (surname) as it appears on your official documents."
+  },
+  {
+    "name": "Line2b_GivenName[0]",
+    "human_label": "What is your first name?",
+    "human_description": "Provide your legal first name as it appears on your official documents."
+  },
+  {
+    "name": "Line2c_MiddleName[0]",
+    "human_label": "What is your middle name?",
+    "human_description": "Provide your legal middle name as it appears on your official documents. If you do not have a middle name, leave this field blank."
+  },
+  {
+    "name": "Line2a_FamilyName[0]",
+    "human_label": "What is your last name?",
+    "human_description": "Provide your legal last name (surname) as it appears on your official documents."
+  },
+  {
+    "name": "USCISELISAcctNumber[0]",
+    "human_label": "What is your USCIS Online Account Number?",
+    "human_description": "If you have a USCIS Online Account, provide the account number. This is not the same as your A-Number."
+  },
+  {
+    "name": "Line4a_InCareofName[0]",
+    "human_label": "What is the 'In Care Of' name?",
+    "human_description": "If someone receives mail on your behalf at this address, provide their name here. Otherwise, leave this field blank."
+  },
+  {
+    "name": "Line4b_StreetNumberName[0]",
+    "human_label": "What is your street number and name?",
+    "human_description": "Provide the street number and name of your current physical address."
+  },
+  {
+    "name": "Pt2Line5_AptSteFlrNumber[0]",
+    "human_label": "What is your apartment, suite, or floor number?",
+    "human_description": "Provide the number of your apartment, suite, or floor, if applicable."
+  },
+  {
+    "name": "Pt2Line5_CityOrTown[0]",
+    "human_label": "What is your city or town?",
+    "human_description": "Provide the city or town of your current physical address."
+  },
+  {
+    "name": "Pt2Line5_State[0]",
+    "human_label": "What is your state?",
+    "human_description": "Provide the state of your current physical address using the two-letter abbreviation."
+  },
+  {
+    "name": "Pt2Line5_ZipCode[0]",
+    "human_label": "What is your ZIP code?",
+    "human_description": "Provide the ZIP code of your current physical address."
+  },
+  {
+    "name": "Line7_AlienNumber",
+    "human_label": "What is your Alien Registration Number (A-Number)?",
+    "human_description": "Provide your A-Number if you have one. This is a unique identification number assigned by the U.S. government."
+  },
+  {
+    "name": "Line8_ElisAccountNumber[0]",
+    "human_label": "What is your USCIS Online Account Number?",
+    "human_description": "If you have a USCIS Online Account, provide the account number. This is not the same as your A-Number."
+  },
+  {
+    "name": "Line12b_SSN[0]",
+    "human_label": "What is your Social Security Number (SSN)?",
+    "human_description": "If you have a Social Security Number, provide it here."
+  },
+  {
+    "name": "Line15b_GivenName[0]",
+    "human_label": "What is your father's first name?",
+    "human_description": "Provide your father's first name."
+  },
+  {
+    "name": "Line15a_FamilyName[0]",
+    "human_label": "What is your father's last name?",
+    "human_description": "Provide your father's last name (surname)."
+  },
+  {
+    "name": "Line16b_GivenName[0]",
+    "human_label": "What is your mother's first name?",
+    "human_description": "Provide your mother's first name."
+  },
+  {
+    "name": "Line16a_FamilyName[0]",
+    "human_label": "What is your mother's last name?",
+    "human_description": "Provide your mother's last name (surname)."
+  },
+  {
+    "name": "Line17a_CountryOfBirth[0]",
+    "human_label": "What is your country of birth?",
+    "human_description": "Provide the country where you were born."
+  },
+  {
+    "name": "Line17b_CountryOfBirth[0]",
+    "human_label": "What is your country of citizenship or nationality?",
+    "human_description": "Provide the country where you are currently a citizen or national."
+  },
+  {
+    "name": "Line19_DOB[0]",
+    "human_label": "What is your date of birth?",
+    "human_description": "Provide your date of birth in the format MM/DD/YYYY."
+  },
+  {
+    "name": "Line18a_CityTownOfBirth[0]",
+    "human_label": "What is the city or town of your birth?",
+    "human_description": "Provide the city or town where you were born."
+  },
+  {
+    "name": "Line18b_CityTownOfBirth[0]",
+    "human_label": "What is the city or town of your citizenship or nationality?",
+    "human_description": "Provide the city or town associated with your country of citizenship or nationality."
+  },
+  {
+    "name": "Line18c_CountryOfBirth[0]",
+    "human_label": "What is your country of birth?",
+    "human_description": "Provide the country where you were born."
+  },
+  {
+    "name": "Line20a_I94Number[0]",
+    "human_label": "What is your Form I-94 Arrival-Departure Record Number?",
+    "human_description": "Provide the Admission Number from your Form I-94 Arrival-Departure Record. You can find this number on your I-94 form or retrieve it from the CBP website."
+  },
+  {
+    "name": "Line20b_Passport[0]",
+    "human_label": "What is your passport number?",
+    "human_description": "Provide your passport number."
+  },
+  {
+    "name": "Line20c_TravelDoc[0]",
+    "human_label": "What is your travel document number?",
+    "human_description": "If you used a travel document other than a passport to enter the U.S., provide its number here."
+  },
+  {
+    "name": "Line20d_CountryOfIssuance[0]",
+    "human_label": "What country issued your passport or travel document?",
+    "human_description": "Provide the country that issued the passport or travel document you used to enter the U.S."
+  },
+  {
+    "name": "Line20e_ExpDate[0]",
+    "human_label": "What is the expiration date of your passport or travel document?",
+    "human_description": "Provide the expiration date of the passport or travel document you used to enter the U.S. in the format MM/DD/YYYY."
+  },
+  {
+    "name": "Line21_DateOfLastEntry[0]",
+    "human_label": "What was your date of last arrival into the U.S.?",
+    "human_description": "Provide the date you last entered the United States in the format MM/DD/YYYY."
+  },
+  {
+    "name": "place_entry[0]",
+    "human_label": "What was the place of your last arrival into the U.S.?",
+    "human_description": "Provide the city and state or port of entry where you last entered the United States."
+  },
+  {
+    "name": "Line23_StatusLastEntry[0]",
+    "human_label": "What was your status at the time of your last arrival?",
+    "human_description": "Provide the immigration status you had when you last entered the United States (e.g., F-1 student, B-2 visitor, Parolee)."
+  },
+  {
+    "name": "Line24_CurrentStatus[0]",
+    "human_label": "What is your current immigration status?",
+    "human_description": "Provide your current immigration status (e.g., F-1 student, Asylum Applicant, Temporary Protected Status)."
+  },
+  {
+    "name": "Line26_SEVISnumber[0]",
+    "human_label": "What is your SEVIS Number?",
+    "human_description": "If you are a student or exchange visitor (typically F-1 or J-1 status), provide your SEVIS (Student and Exchange Visitor Information System) number. This number is on your Form I-20 or DS-2019."
+  },
+  {
+    "name": "Line27a_Degree[0]",
+    "human_label": "What is your degree?",
+    "human_description": "If you are applying based on a degree, provide the name of the degree."
+  },
+  {
+    "name": "Line27b_Everify[0]",
+    "human_label": "What is your employer's E-Verify name?",
+    "human_description": "If your eligibility category requires it, provide your employer's name as enrolled in the E-Verify program."
+  },
+  {
+    "name": "Line27c_EverifyIDNumber[0]",
+    "human_label": "What is your employer's E-Verify Identification Number or Valid E-Verify Client Company ID?",
+    "human_description": "If your eligibility category requires it, provide your employer's E-Verify ID number."
+  },
+  {
+    "name": "Line28_ReceiptNumber[0]",
+    "human_label": "What is the receipt number of your most recent Form I-797 Notice of Action for the underlying eligibility to file Form I-765?",
+    "human_description": "If applicable, provide the receipt number from the USCIS notice related to your underlying immigration status that makes you eligible for an EAD."
+  },
+  {
+    "name": "Line30a_ReceiptNumber[0]",
+    "human_label": "What is the receipt number of your most recent Form I-797 Notice of Action for the underlying eligibility to file Form I-765?",
+    "human_description": "If applicable, provide the receipt number from the USCIS notice related to your underlying immigration status that makes you eligible for an EAD."
+  },
+  {
+    "name": "section_1[0]",
+    "human_label": "What is your eligibility category?",
+    "human_description": "Enter the appropriate eligibility category code for your application. Refer to the form instructions for a list of categories."
+  },
+  {
+    "name": "section_2[0]",
+    "human_label": "What is your eligibility category?",
+    "human_description": "Enter the appropriate eligibility category code for your application. Refer to the form instructions for a list of categories."
+  },
+  {
+    "name": "section_3[0]",
+    "human_label": "What is your eligibility category?",
+    "human_description": "Enter the appropriate eligibility category code for your application. Refer to the form instructions for a list of categories."
+  },
+  {
+    "name": "Pt3Line1b_Language[0]",
+    "human_label": "What language did the interpreter use?",
+    "human_description": "If you used an interpreter, provide the language they used to read the application to you."
+  },
+  {
+    "name": "Pt3Line2_RepresentativeName[0]",
+    "human_label": "What is the name of the preparer or attorney?",
+    "human_description": "If someone prepared this application for you, provide their full name or the name of the organization."
+  },
+  {
+    "name": "Pt3Line3_DaytimePhoneNumber1[0]",
+    "human_label": "What is your daytime phone number?",
+    "human_description": "Provide a phone number where you can be reached during the day."
+  },
+  {
+    "name": "Pt3Line4_MobileNumber1[0]",
+    "human_label": "What is your mobile phone number?",
+    "human_description": "Provide your mobile phone number."
+  },
+  {
+    "name": "Pt3Line5_Email[0]",
+    "human_label": "What is your email address?",
+    "human_description": "Provide your email address."
+  },
+  {
+    "name": "Pt3Line7a_Signature[0]",
+    "human_label": "Sign here.",
+    "human_description": "Provide your signature."
+  },
+  {
+    "name": "Pt3Line7b_DateofSignature[0]",
+    "human_label": "What is the date of your signature?",
+    "human_description": "Provide the date you signed the application in the format MM/DD/YYYY."
+  },
+  {
+    "name": "Pt4Line1b_InterpreterGivenName[0]",
+    "human_label": "What is the interpreter's first name?",
+    "human_description": "If an interpreter helped you, provide their first name."
+  },
+  {
+    "name": "Pt4Line1a_InterpreterFamilyName[0]",
+    "human_label": "What is the interpreter's last name?",
+    "human_description": "If an interpreter helped you, provide their last name (surname)."
+  },
+  {
+    "name": "Pt4Line2_InterpreterBusinessorOrg[0]",
+    "human_label": "What is the interpreter's business or organization name?",
+    "human_description": "If the interpreter works for a business or organization, provide its name."
+  },
+  {
+    "name": "Part4_NameofLanguage[0]",
+    "human_label": "What language did the interpreter use?",
+    "human_description": "Provide the language the interpreter used to communicate with you."
+  },
+  {
+    "name": "Pt4Line4_InterpreterDaytimeTelephone[0]",
+    "human_label": "What is the interpreter's daytime phone number?",
+    "human_description": "Provide a phone number where the interpreter can be reached during the day."
+  },
+  {
+    "name": "Pt4Line5_MobileNumber[0]",
+    "human_label": "What is the interpreter's mobile phone number?",
+    "human_description": "Provide the interpreter's mobile phone number."
+  },
+  {
+    "name": "Pt4Line6_Email[0]",
+    "human_label": "What is the interpreter's email address?",
+    "human_description": "Provide the interpreter's email address."
+  },
+  {
+    "name": "Pt4Line6a_Signature[0]",
+    "human_label": "Interpreter's Signature",
+    "human_description": "The interpreter must sign here."
+  },
+  {
+    "name": "Pt4Line6b_DateofSignature[0]",
+    "human_label": "What is the date of the interpreter's signature?",
+    "human_description": "Provide the date the interpreter signed in the format MM/DD/YYYY."
+  },
+  {
+    "name": "Pt5Line1b_PreparerGivenName[0]",
+    "human_label": "What is the preparer's first name?",
+    "human_description": "If someone prepared this application for you, provide their first name."
+  },
+  {
+    "name": "Pt5Line1a_PreparerFamilyName[0]",
+    "human_label": "What is the preparer's last name?",
+    "human_description": "If someone prepared this application for you, provide their last name (surname)."
+  },
+  {
+    "name": "Pt5Line2_BusinessName[0]",
+    "human_label": "What is the preparer's business or organization name?",
+    "human_description": "If the preparer works for a business or organization, provide its name."
+  },
+  {
+    "name": "Pt5Line3a_StreetNumberName[0]",
+    "human_label": "What is the preparer's street number and name?",
+    "human_description": "Provide the street number and name of the preparer's business or home address."
+  },
+  {
+    "name": "Pt5Line3b_AptSteFlrNumber[0]",
+    "human_label": "What is the preparer's apartment, suite, or floor number?",
+    "human_description": "Provide the number of the preparer's apartment, suite, or floor, if applicable."
+  },
+  {
+    "name": "Pt5Line3c_CityOrTown[0]",
+    "human_label": "What is the preparer's city or town?",
+    "human_description": "Provide the city or town of the preparer's business or home address."
+  },
+  {
+    "name": "Pt5Line3d_State[0]",
+    "human_label": "What is the preparer's state?",
+    "human_description": "Provide the state of the preparer's business or home address using the two-letter abbreviation."
+  },
+  {
+    "name": "Pt5Line3e_ZipCode[0]",
+    "human_label": "What is the preparer's ZIP code?",
+    "human_description": "Provide the ZIP code of the preparer's business or home address."
+  },
+  {
+    "name": "Pt5Line3f_Province[0]",
+    "human_label": "What is the preparer's province?",
+    "human_description": "If the preparer's address is outside the U.S., provide the province."
+  },
+  {
+    "name": "Pt5Line3g_PostalCode[0]",
+    "human_label": "What is the preparer's postal code?",
+    "human_description": "If the preparer's address is outside the U.S., provide the postal code."
+  },
+  {
+    "name": "Pt5Line3h_Country[0]",
+    "human_label": "What is the preparer's country?",
+    "human_description": "Provide the country of the preparer's business or home address."
+  },
+  {
+    "name": "Pt5Line4_DaytimePhoneNumber1[0]",
+    "human_label": "What is the preparer's daytime phone number?",
+    "human_description": "Provide a phone number where the preparer can be reached during the day."
+  },
+  {
+    "name": "Pt5Line5_PreparerFaxNumber[0]",
+    "human_label": "What is the preparer's fax number?",
+    "human_description": "Provide the preparer's fax number, if applicable."
+  },
+  {
+    "name": "Pt5Line6_Email[0]",
+    "human_label": "What is the preparer's email address?",
+    "human_description": "Provide the preparer's email address."
+  },
+  {
+    "name": "Pt5Line8a_Signature[0]",
+    "human_label": "Preparer's Signature",
+    "human_description": "The preparer must sign here."
+  },
+  {
+    "name": "Pt5Line8b_DateofSignature[0]",
+    "human_label": "What is the date of the preparer's signature?",
+    "human_description": "Provide the date the preparer signed in the format MM/DD/YYYY."
+  },
+  {
+    "name": "Pt6Line3a_PageNumber[0]",
+    "human_label": "What is the page number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the page number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line3b_PartNumber[0]",
+    "human_label": "What is the part number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the part number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line3c_ItemNumber[0]",
+    "human_label": "What is the item number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the item number within the part of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line4a_PageNumber[0]",
+    "human_label": "What is the page number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the page number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line4b_PartNumber[0]",
+    "human_label": "What is the part number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the part number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line4c_ItemNumber[0]",
+    "human_label": "What is the item number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the item number within the part of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line4d_AdditionalInfo",
+    "human_label": "Provide additional information here.",
+    "human_description": "Use this space to provide any additional information that is required or relevant to your application."
+  },
+  {
+    "name": "Pt6Line5a_PageNumber[0]",
+    "human_label": "What is the page number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the page number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line5b_PartNumber[0]",
+    "human_label": "What is the part number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the part number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line5c_ItemNumber[0]",
+    "human_label": "What is the item number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the item number within the part of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line5d_AdditionalInfo[0]",
+    "human_label": "Provide additional information here.",
+    "human_description": "Use this space to provide any additional information that is required or relevant to your application."
+  },
+  {
+    "name": "Pt6Line6a_PageNumber[0]",
+    "human_label": "What is the page number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the page number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line6b_PartNumber[0]",
+    "human_label": "What is the part number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the part number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line6c_ItemNumber[0]",
+    "human_label": "What is the item number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the item number within the part of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line6d_AdditionalInfo[0]",
+    "human_label": "Provide additional information here.",
+    "human_description": "Use this space to provide any additional information that is required or relevant to your application."
+  },
+  {
+    "name": "Pt6Line7a_PageNumber[0]",
+    "human_label": "What is the page number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the page number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line7b_PartNumber[0]",
+    "human_label": "What is the part number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the part number of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line7c_ItemNumber[0]",
+    "human_label": "What is the item number of the additional information?",
+    "human_description": "If you are providing additional information, indicate the item number within the part of the form that the information relates to."
+  },
+  {
+    "name": "Pt6Line7d_AdditionalInfo[0]",
+    "human_label": "Provide additional information here.",
+    "human_description": "Use this space to provide any additional information that is required or relevant to your application."
+  }
+]
