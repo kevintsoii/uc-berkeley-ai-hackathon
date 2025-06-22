@@ -25,6 +25,7 @@ export default function FillPage() {
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [isFinishing, setIsFinishing] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
+  const [isProcessingPdf, setIsProcessingPdf] = useState(true);
   useTheme(); // Initialize dark mode
 
   // Default form type - in a real app, this would be determined by the uploaded PDF
@@ -236,36 +237,61 @@ export default function FillPage() {
 
   if (isFinished) {
     return (
-      <div className="min-h-screen bg-gradient-custom flex items-center justify-center">
-        <div className="text-center">
-          <div className="mb-8">
-            <div className="w-32 h-32 mx-auto mb-6 bg-green-500 rounded-full flex items-center justify-center">
-              <svg
-                className="w-16 h-16 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={3}
-                  d="M5 13l4 4L19 7"
-                />
-              </svg>
+      <div className="min-h-screen bg-gradient-custom">
+        <div className="flex h-screen">
+          {/* Left side - PDF Embed */}
+          <div className="w-1/2 p-4">
+            <div className="h-full bg-white rounded-lg shadow-lg">
+              <iframe
+                src="http://localhost:8000/finished.pdf"
+                className="w-full h-full rounded-lg"
+                title="Finished Form PDF"
+              />
             </div>
-            <h1 className="text-4xl font-bold text-foreground-custom mb-4">
-              Form Completed Successfully!
-            </h1>
-            <p className="text-xl text-secondary-custom mb-8">
-              Your form has been processed and submitted.
-            </p>
-            <button
-              onClick={() => router.push("/")}
-              className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
-            >
-              Return to Home
-            </button>
+          </div>
+
+          {/* Right side - Success message and loading */}
+          <div className="w-1/2 flex flex-col items-center justify-center p-8">
+            <div className="text-center">
+              <div className="w-24 h-24 mx-auto mb-6 bg-green-500 rounded-full flex items-center justify-center">
+                <svg
+                  className="w-12 h-12 text-white"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={3}
+                    d="M5 13l4 4L19 7"
+                  />
+                </svg>
+              </div>
+              <h1 className="text-4xl font-bold text-foreground-custom mb-4">
+                Form Completed Successfully!
+              </h1>
+              <p className="text-xl text-secondary-custom mb-8">
+                Your form has been processed and submitted.
+              </p>
+
+              {/* Loading spinner below the message */}
+              {isProcessingPdf && (
+                <div className="mb-8">
+                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto"></div>
+                  <p className="mt-4 text-secondary-custom">
+                    Processing additional documents...
+                  </p>
+                </div>
+              )}
+
+              <button
+                onClick={() => router.push("/")}
+                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Return to Home
+              </button>
+            </div>
           </div>
         </div>
       </div>

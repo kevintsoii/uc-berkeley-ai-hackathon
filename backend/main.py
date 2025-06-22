@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException, File, UploadFile, Request, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import uvicorn
 import os
@@ -101,7 +103,7 @@ LANGUAGE_MAPPING = {
 class AssistantUpdateRequest(BaseModel):
     language: str
     heading: str
-    form_type: str
+    form_type: str = file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')
 
 class LanguageUpdateRequest(BaseModel):
     language: str
@@ -155,6 +157,18 @@ async def finish_form():
     return {
         "message": "Form finished successfully"
     }
+
+@app.get("/finished.pdf")
+async def get_finished_pdf():
+    """Serve the finished PDF file"""
+    if not os.path.exists("finished.pdf"):
+        raise HTTPException(status_code=404, detail="Finished PDF not found")
+    
+    return FileResponse(
+        path="finished.pdf",
+        media_type="application/pdf",
+        filename="finished.pdf"
+    )
 
 @app.post("/process")
 async def process_form(request: Request, background_tasks: BackgroundTasks):
