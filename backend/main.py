@@ -41,6 +41,7 @@ language = "en"
 file_name = "form.pdf"
 default_form = False
 processing = False
+form_fields = []
 
 # Create upload directory
 os.makedirs("uploads", exist_ok=True)
@@ -94,34 +95,6 @@ LANGUAGE_MAPPING = {
     "uk": "Ukrainian"
 }
 
-
-    # Default form fields - in a real app, this could be determined by the uploaded PDF
-form_fields = [
-    {
-        "id": 1,
-        "field": "First Name",
-        "description": "Please provide your first name as it appears on your official documents.",
-        "type": "text",
-        "required": True,
-        "value": "",
-    },
-    {
-        "id": 2,
-        "field": "Middle Name",
-        "description": "Please provide your middle name as it appears on your official documents.",
-        "type": "text",
-        "required": False,
-        "value": "",
-    },
-    {
-        "id": 3,
-        "field": "Last Name",
-        "description": "Please provide your last name as it appears on your official documents.",
-        "type": "text",
-        "required": True,
-        "value": "",
-    },
-]
 
 # Pydantic model for request validation
 class AssistantUpdateRequest(BaseModel):
@@ -178,11 +151,24 @@ async def process_form(request: Request, background_tasks: BackgroundTasks):
     }
 
 async def process():
-    global processing, file_name
+    global processing, file_name, form_fields
     if default_form:
         file_name = "forms/defualt/" + file_name
     else:
         file_name = "uploads/" +file_name
+
+
+    json_file_name = file_name.replace(".pdf", ".json")
+
+    data = None
+    if os.path.exists(json_file_name):
+        with open(json_file_name, "r") as f:
+            data = json.load(f)
+
+    if data:
+        form_fields = data
+        processing = False
+        return
 
     # read file
     print("Current working directory:", os.getcwd())
@@ -242,6 +228,7 @@ async def process():
         config={
             "response_mime_type": "application/json",
             "response_schema": list[FormField],
+            "max_output_tokens": 1000000
         },
     )
     print('gemini done')
@@ -270,7 +257,13 @@ def get_page_info(page_id: str):
         current_field = form_fields[page_num - 1]
         
         return {
-            "current_field": current_field,
+            "current_field": {
+                    "field": current_field["human_label"],
+                    "description": current_field["human_description"],
+                    "type": "text",
+                    "required": True,
+                    "value": current_field.get("value", ""),
+            },
             "total_pages": len(form_fields),
             "current_page": page_num,
             "progress": (page_num / len(form_fields)) * 100
@@ -312,7 +305,8 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
         logger.info(f"Converted language code '{request.language}' to '{language_name}'")
         
         # Translate the first message to the user's language
-        first_message_template = f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {request.form_type} form. What did you want me to explain?"
+        print(file_name)
+        first_message_template = f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')} form. What did you want me to explain?"
         translated_message = GoogleTranslator(source='auto', target=request.language).translate(first_message_template)
         logger.info(f"Translated first message to '{request.language}': {translated_message}")
 
