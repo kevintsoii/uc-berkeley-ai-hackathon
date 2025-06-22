@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import Vapi from "@vapi-ai/web";
 
-const publicKey = "2d89a8ef-c549-475f-a2ad-0ff6e65d1689"; // Replace with your actual public key
+const publicKey = process.env.NEXT_PUBLIC_VAPI_PUBLIC_KEY;
 
 export default function VoiceAssistant() {
   const [volumeLevel, setVolumeLevel] = useState(0);
