@@ -29,7 +29,6 @@ forms = {
     }
 }
 
-
 for fid, links in forms.items():
     os.makedirs(f"static/forms/{fid}", exist_ok=True)
     for kind, url in links.items():

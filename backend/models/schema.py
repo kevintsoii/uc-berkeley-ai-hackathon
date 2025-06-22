@@ -1,8 +1,5 @@
 from pydantic import BaseModel
-from typing import List, Optional
-
-class FormUploadRequest(BaseModel):
-    form_id: str
+from typing  import List, Optional
 
 class FieldSchema(BaseModel):
     field_id:     str
@@ -17,10 +14,13 @@ class FormSchema(BaseModel):
     form_id: str
     fields:  List[FieldSchema]
 
+class SessionSchema(FormSchema):
+    session_id: str
+
 class FieldExplainRequest(BaseModel):
-    field_id: str
-    question: str
-    language: str = "en"
+    session_id: str
+    field_id:   str
+    language:   str = "en"
 
 class FieldExplainResponse(BaseModel):
     explanation: str

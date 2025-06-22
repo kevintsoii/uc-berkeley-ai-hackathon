@@ -1,15 +1,24 @@
-from fastapi import APIRouter
-from models.schema import UserResponse
-from services.pdf_generator import generate_filled_pdf
+from fastapi import APIRouter, HTTPException
+from models.schema          import UserResponse
+from services.pdf_worker import generate_filled_pdf
+from routes.session         import _SESSIONS
 
-router = APIRouter()
+# In‐memory storage of answers
+_RESPONSES: dict[str, dict[str,str]] = {}
 
-@router.post("/response")
-async def submit_response(resp: UserResponse):
-    # save resp under resp.session_id+resp.field_id
+router = APIRouter(prefix="/sessions", tags=["submit"])
+
+@router.post("/{session_id}/responses")
+async def submit_response(session_id: str, resp: UserResponse):
+    if session_id not in _SESSIONS:
+        raise HTTPException(404, "Session not found")
+    _RESPONSES.setdefault(session_id, {})[resp.field_id] = resp.answer
     return {"status": "saved"}
 
-@router.get("/pdf/{session_id}")
-async def get_pdf(session_id: str):
-    url = await generate_filled_pdf(session_id)
-    return {"pdf_url": url}
+@router.get("/{session_id}/pdf")
+async def get_filled_pdf(session_id: str):
+    if session_id not in _SESSIONS:
+        raise HTTPException(404, "Session not found")
+    answers = _RESPONSES.get(session_id, {})
+    pdf_url = await generate_filled_pdf(session_id, answers)
+    return {"pdf_url": pdf_url}
