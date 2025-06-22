@@ -35,7 +35,7 @@ export default function Header({
               </svg>
             </div>
             <h1 className="text-2xl font-bold text-foreground-custom">
-              FormBridge
+              Formigrant
             </h1>
           </a>
 

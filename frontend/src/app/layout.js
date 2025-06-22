@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "FormBridge - Immigration Form Assistant",
+  title: "Formigrant - Immigration Form Assistant",
   description:
     "AI-powered assistance for filling out immigration forms with multilingual support and voice guidance",
   icons: {

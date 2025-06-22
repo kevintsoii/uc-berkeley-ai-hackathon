@@ -632,7 +632,7 @@ export default function Home() {
 
         {/* Features Section */}
         <h3 className="text-3xl font-bold text-foreground-custom mb-8 text-center mt-40">
-          How FormBridge Helps You
+          How Formigrant Helps You
         </h3>
         <div className="bg-card-custom rounded-2xl shadow-lg p-8 mb-16">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

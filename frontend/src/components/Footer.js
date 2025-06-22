@@ -4,9 +4,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="text-center">
           <div className="flex items-center justify-center space-x-3 mb-4">
-         
             <h3 className="text-lg font-bold text-foreground-custom">
-              FormBridge
+              <span className="text-blue-400">For</span>migrant
             </h3>
           </div>
           <p className="text-secondary-custom mb-4 text-sm">
