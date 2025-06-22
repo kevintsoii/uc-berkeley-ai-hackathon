@@ -247,8 +247,8 @@ export default function FillPage() {
             {/* Voice Assistant Button */}
             <div className="flex justify-center">
               <VapiAssistant 
-                apiKey={process.env.NEXT_PUBLIC_VAPI_API_KEY}
-                assistantId={process.env.VAPI_ASSISTANT_ID}
+                apiKey={process.env.NEXT_PUBLIC_VAPI_PUBLIC_API_KEY}
+                assistantId={process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID}
                 language={selectedLanguage}
                 formType={formType}
                 heading={currentField?.name || "General Information"}

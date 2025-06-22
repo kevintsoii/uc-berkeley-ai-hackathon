@@ -25,6 +25,7 @@ const VapiAssistant = ({
   const [updateSuccess, setUpdateSuccess] = useState(false);
 
   useEffect(() => {
+    
     const vapiInstance = new Vapi(apiKey);
     setVapi(vapiInstance);
 
