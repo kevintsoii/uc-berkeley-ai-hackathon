@@ -51,6 +51,41 @@ export default function FillPage() {
     fetchPageInfo();
   }, [pageNum, router]);
 
+  const handleVoiceAssistant = () => {
+    setIsListening(!isListening);
+    // In a real app, this would trigger voice synthesis or recognition
+    if (!isListening) {
+      // Simulate voice assistance
+      const assistanceText = getVoiceAssistance(currentField?.name);
+      if ("speechSynthesis" in window) {
+        const utterance = new SpeechSynthesisUtterance(assistanceText);
+        utterance.rate = 0.8;
+        utterance.onend = () => setIsListening(false);
+        speechSynthesis.speak(utterance);
+      }
+    } else {
+      // Stop speech if currently speaking
+      if ("speechSynthesis" in window) {
+        speechSynthesis.cancel();
+      }
+    }
+  };
+
+  const getVoiceAssistance = (fieldName) => {
+    const assistanceMap = {
+      "First Name":
+        "Please enter your first name as it appears on your official documents. This is your given name, not your family name or surname.",
+      "Middle Name":
+        'Enter your middle name if you have one. This field is optional. If you don\'t have a middle name, you can leave this blank or write "N/A".',
+      "Last Name":
+        "Please enter your last name, also known as your family name or surname. This should match exactly with your official documents.",
+    };
+    return (
+      assistanceMap[fieldName] ||
+      `Please enter your ${fieldName.toLowerCase()}.`
+    );
+  };
+
   // Redirect if page number is invalid - now handled by backend
   useEffect(() => {
     if (error && error.includes("404")) {
@@ -175,7 +210,17 @@ export default function FillPage() {
             </div>
           </div>
         </div>
-
+        {/* Voice Assistant Button */}
+        <div className="flex justify-center">
+          <VapiAssistant
+            apiKey={process.env.NEXT_PUBLIC_VAPI_PUBLIC_API_KEY}
+            assistantId={process.env.NEXT_PUBLIC_VAPI_ASSISTANT_ID}
+            language={selectedLanguage}
+            formType={formType}
+            heading={pageInfo.current_field?.field || "General Information"}
+            backendUrl="http://localhost:8000"
+          />
+        </div>
         {/* Navigation Buttons - Outside the card */}
         <div
           className={`flex mt-8 ${
@@ -230,7 +275,6 @@ export default function FillPage() {
             </svg>
           </button>
         </div>
-
         {/* Helper Text */}
         <div className="text-center mt-6">
           <p className="text-sm text-secondary-custom">
