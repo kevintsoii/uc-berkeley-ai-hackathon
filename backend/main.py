@@ -14,7 +14,7 @@ import asyncio
 from deep_translator import GoogleTranslator
 import base64
 import os
-from pypdf import PdfReader
+from pypdf import PdfReader, PdfWriter
 from google import genai
 from pydantic import BaseModel
 from google.genai import types
@@ -130,6 +130,31 @@ async def upload_file(file: UploadFile = File(...)):
     return {
         "message": "File uploaded successfully"
     }
+from pypdf.generic import NameObject
+
+@app.post("/finish")
+async def finish_form():
+    reader = PdfReader(file_name)
+    writer = PdfWriter()
+    for page in reader.pages:
+        writer.add_page(page)
+
+    if "/AcroForm" in reader.trailer["/Root"]:
+        writer._root_object.update({
+            NameObject("/AcroForm"): reader.trailer["/Root"]["/AcroForm"]
+    })
+    update_values={
+        field["name"]: field["value"] for field in form_fields if "value" in field and field["value"]
+    }
+    print(update_values)
+    writer.update_page_form_field_values(writer.pages[0], update_values)
+
+    with open("finished.pdf", "wb") as f:
+        writer.write(f)
+
+    return {
+        "message": "Form finished successfully"
+    }
 
 @app.post("/process")
 async def process_form(request: Request, background_tasks: BackgroundTasks):
@@ -202,13 +227,21 @@ async def process():
     myfile = await client.aio.files.get(name=file_name)
 
     prompt = f"""
-        You are a helpful assistant for immigration documents, helping foreign migrants fill out forms and understand the instructions.
-        I want you to hydrate each of the form fields with a human label and human description, and return the 
-        full hydrated object in the provided format.
+       You are a helpful assistant for immigration documents, helping foreign migrants fill out forms and understand the instructions.
 
-        The form fields with values [name, value, type, label] is attached.
+       I want you to hydrate each of the form fields with a human label and human description, and return the full hydrated object in the provided format.
 
-    """
+
+      The form fields with values [name, label] is attached as well as the original pdf form for context.
+
+
+
+        Return in this format for each field"""+"""  {
+            name
+            human_label
+            human_description
+            }"""
+           
        # I also have the full text of the pdf form for context:
        # {full_text}
 
@@ -235,6 +268,7 @@ async def process():
     print('gemini done')
 
     # 4) Parse & return
+    print(response.status_code)
     result = response.text
     input(result)
     #result = json.loads(response.text)
@@ -282,6 +316,8 @@ def save_field_value(page_id: str, request: FieldValueRequest):
 
         current_field = form_fields[page_num - 1]
         current_field["value"] = request.value
+
+        print(form_fields)
 
         return {"message": "Value saved successfully"}
 

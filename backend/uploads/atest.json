@@ -1,0 +1,22 @@
+[
+    {
+      "name": "text_1judj",
+      "human_label": "First Name",
+      "human_description": "Enter your legal first name as it appears on your official documents."
+    },
+    {
+      "name": "text_2ikxr",
+      "human_label": "Last Name",
+      "human_description": "Enter your legal last name (family name) as it appears on your official documents."
+    },
+    {
+      "name": "text_3nfmi",
+      "human_label": "Date of Birth",
+      "human_description": "Enter your date of birth in the format MM/DD/YYYY."
+    },
+    {
+      "name": "text_4jtxg",
+      "human_label": "Association with Totalitarian Party",
+      "human_description": "Indicate whether you have ever been a member of, or in any way associated (either directly or indirectly) with, a totalitarian party. This is typically a 'Yes' or 'No' question."
+    }
+  ]

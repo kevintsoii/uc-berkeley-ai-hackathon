@@ -23,6 +23,7 @@ export default function FillPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
+  const [isFinishing, setIsFinishing] = useState(false);
   useTheme(); // Initialize dark mode
 
   // Default form type - in a real app, this would be determined by the uploaded PDF
