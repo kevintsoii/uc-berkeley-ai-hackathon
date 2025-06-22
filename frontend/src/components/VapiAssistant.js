@@ -145,17 +145,7 @@ const VapiAssistant = ({
   return (
     <div className="fixed bottom-6 right-6 z-50 font-sans">
       {!isConnected ? (
-        <div className="flex flex-col items-end space-y-2">
-          {updateError && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-2 rounded-lg text-sm max-w-xs">
-              <strong>Update Error:</strong> {updateError}
-            </div>
-          )}
-          {updateSuccess && (
-            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded-lg text-sm max-w-xs">
-              <strong>✅ Success!</strong> Assistant updated with {language} language for {heading}
-            </div>
-          )}
+        <div className="flex items-center justify-center">
           <button
             onClick={startCall}
             disabled={isUpdating}
@@ -163,7 +153,7 @@ const VapiAssistant = ({
               isUpdating ? 'opacity-50 cursor-not-allowed' : ''
             }`}
           >
-            {isUpdating ? '🔄 Updating...' : '🎤 Talk to Assistant'}
+            {isUpdating ? '🔄 Loading...' : '🎤 Talk to Assistant'}
           </button>
         </div>
       ) : (
