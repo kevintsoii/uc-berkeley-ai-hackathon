@@ -22,16 +22,45 @@ export default function FillPage() {
 
   // Language options
   const languages = [
-    { code: "en", name: "English", native: "English" },
-    { code: "es", name: "Spanish", native: "Español" },
-    { code: "zh", name: "Chinese", native: "中文" },
-    { code: "hi", name: "Hindi", native: "हिन्दी" },
     { code: "ar", name: "Arabic", native: "العربية" },
-    { code: "pt", name: "Portuguese", native: "Português" },
-    { code: "ru", name: "Russian", native: "Русский" },
+    { code: "bg", name: "Bulgarian", native: "Български" },
+    { code: "bn", name: "Bengali", native: "বাংলা" },
+    { code: "zh", name: "Chinese", native: "中文" },
+    { code: "hr", name: "Croatian", native: "Hrvatski" },
+    { code: "cs", name: "Czech", native: "Čeština" },
+    { code: "da", name: "Danish", native: "Dansk" },
+    { code: "nl", name: "Dutch", native: "Nederlands" },
+    { code: "en", name: "English", native: "English" },
+    { code: "et", name: "Estonian", native: "Eesti" },
+    { code: "fi", name: "Finnish", native: "Suomi" },
     { code: "fr", name: "French", native: "Français" },
     { code: "de", name: "German", native: "Deutsch" },
+    { code: "el", name: "Greek", native: "Ελληνικά" },
+    { code: "he", name: "Hebrew", native: "עברית" },
+    { code: "hi", name: "Hindi", native: "हिन्दी" },
+    { code: "hu", name: "Hungarian", native: "Magyar" },
+    { code: "id", name: "Indonesian", native: "Bahasa Indonesia" },
+    { code: "it", name: "Italian", native: "Italiano" },
     { code: "ja", name: "Japanese", native: "日本語" },
+    { code: "ko", name: "Korean", native: "한국어" },
+    { code: "lv", name: "Latvian", native: "Latviešu" },
+    { code: "lt", name: "Lithuanian", native: "Lietuvių" },
+    { code: "ms", name: "Malay", native: "Bahasa Melayu" },
+    { code: "no", name: "Norwegian", native: "Norsk" },
+    { code: "pl", name: "Polish", native: "Polski" },
+    { code: "pt", name: "Portuguese", native: "Português" },
+    { code: "ro", name: "Romanian", native: "Română" },
+    { code: "ru", name: "Russian", native: "Русский" },
+    { code: "sr", name: "Serbian", native: "Српски" },
+    { code: "sk", name: "Slovak", native: "Slovenčina" },
+    { code: "sl", name: "Slovenian", native: "Slovenščina" },
+    { code: "es", name: "Spanish", native: "Español" },
+    { code: "sw", name: "Swahili", native: "Kiswahili" },
+    { code: "sv", name: "Swedish", native: "Svenska" },
+    { code: "th", name: "Thai", native: "ไทย" },
+    { code: "tr", name: "Turkish", native: "Türkçe" },
+    { code: "uk", name: "Ukrainian", native: "Українська" },
+    { code: "vi", name: "Vietnamese", native: "Tiếng Việt" },
   ];
 
   // Form configuration - in a real app, this would come from the uploaded PDF analysis
@@ -218,8 +247,8 @@ export default function FillPage() {
             {/* Voice Assistant Button */}
             <div className="flex justify-center">
               <VapiAssistant 
-                apiKey="7d157f06-cf48-4f3a-bbc4-610fbbdc4f2f" 
-                assistantId="7cdf2e9e-6bb3-4fb7-9648-4beba2c91a80"
+                apiKey={process.env.NEXT_PUBLIC_VAPI_API_KEY}
+                assistantId={process.env.VAPI_ASSISTANT_ID}
                 language={selectedLanguage}
                 formType={formType}
                 heading={currentField?.name || "General Information"}
