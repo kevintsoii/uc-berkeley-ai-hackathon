@@ -105,6 +105,7 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
             "model": {
                 "provider": "google",
                 "model": "gemini-2.5-pro-preview-05-06",
+                "maxTokens": 10000,
                 "emotionRecognitionEnabled": True,
                 "systemPrompt": f'''
                         You are a multilingual, empathetic, and knowledgeable AI voice assistant that helps immigrants understand and complete U.S. immigration forms. 
@@ -115,7 +116,8 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
             },
             "firstMessage": f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {request.form_type} form. What did you want me to explain?",
             "endCallMessage": "Have a great day! Let me know if you need any more help.",
-            "firstMessageMode": "assistant-speaks-first"
+            "firstMessageMode": "assistant-speaks-first",
+            "maxDurationSeconds": 43200   
         }
 
         headers = {
