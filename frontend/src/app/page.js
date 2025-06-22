@@ -11,6 +11,7 @@ export default function Home() {
   const router = useRouter();
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [dragActive, setDragActive] = useState(false);
+  const [uploading, setUploading] = useState(false);
   useTheme(); // Initialize dark mode
 
   const languages = [
@@ -68,6 +69,7 @@ export default function Home() {
           description: "Petition for Alien Relative",
           difficulty: "Beginner",
           estimatedTime: "30-45 min",
+          fileName: "I-130.pdf",
         },
         {
           id: 2,
@@ -75,6 +77,7 @@ export default function Home() {
           description: "Application to Adjust Status to Permanent Resident",
           difficulty: "Intermediate",
           estimatedTime: "45-60 min",
+          fileName: "I-485.pdf",
         },
       ],
     },
@@ -89,6 +92,7 @@ export default function Home() {
           description: "Immigrant Petition for Alien Workers",
           difficulty: "Advanced",
           estimatedTime: "60-90 min",
+          fileName: "I-140.pdf",
         },
         {
           id: 4,
@@ -96,6 +100,7 @@ export default function Home() {
           description: "Application for Permanent Employment Certification",
           difficulty: "Advanced",
           estimatedTime: "90-120 min",
+          fileName: "PERM.pdf",
         },
         {
           id: 5,
@@ -103,6 +108,7 @@ export default function Home() {
           description: "Application to Adjust Status to Permanent Resident",
           difficulty: "Intermediate",
           estimatedTime: "45-60 min",
+          fileName: "I-485.pdf",
         },
       ],
     },
@@ -117,6 +123,7 @@ export default function Home() {
           description: "Application for Asylum and for Withholding of Removal",
           difficulty: "Advanced",
           estimatedTime: "90-120 min",
+          fileName: "I-589.pdf",
         },
         {
           id: 7,
@@ -124,6 +131,7 @@ export default function Home() {
           description: "Application to Adjust Status to Permanent Resident",
           difficulty: "Intermediate",
           estimatedTime: "45-60 min",
+          fileName: "I-485.pdf",
         },
       ],
     },
@@ -136,6 +144,82 @@ export default function Home() {
         "Upload your I-20 form from your school to get started",
     },
   ];
+
+  const API_BASE_URL =
+    process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+
+  const handleDefaultFormClick = async (form) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/process`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          language: selectedLanguage,
+          default_form: true,
+          file_name: form.fileName,
+        }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        // Navigate to fill page with session or result data
+        router.push("/fill/1");
+      } else {
+        console.error("Failed to process default form");
+      }
+    } catch (error) {
+      console.error("Error processing default form:", error);
+    }
+  };
+
+  const handleCustomFileUpload = async (file) => {
+    setUploading(true);
+
+    try {
+      // First, upload the file
+      const formData = new FormData();
+      formData.append("file", file);
+
+      const uploadResponse = await fetch(`${API_BASE_URL}/upload`, {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!uploadResponse.ok) {
+        throw new Error("Upload failed");
+      }
+
+      const uploadResult = await uploadResponse.json();
+
+      // Then process the uploaded file
+      const processResponse = await fetch(`${API_BASE_URL}/process`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          language: selectedLanguage,
+          default_form: false,
+          file_name: uploadResult.file_name || file.name,
+        }),
+      });
+
+      if (processResponse.ok) {
+        const processResult = await processResponse.json();
+        // Navigate to fill page with session or result data
+        router.push("/fill/1");
+      } else {
+        throw new Error("Processing failed");
+      }
+    } catch (error) {
+      console.error("Error uploading/processing file:", error);
+      alert("Failed to upload or process file. Please try again.");
+    } finally {
+      setUploading(false);
+    }
+  };
 
   const handleDrag = (e) => {
     e.preventDefault();
@@ -154,21 +238,17 @@ export default function Home() {
 
     const files = e.dataTransfer.files;
     if (files && files[0]) {
-      // Handle file upload here
-      console.log("File uploaded:", files[0]);
-      // Navigate to first fill page
-      router.push("/fill/1");
+      handleCustomFileUpload(files[0]);
     }
   };
 
   const handleFileInput = (e) => {
     const files = e.target.files;
     if (files && files[0]) {
-      // Handle file upload here
-      console.log("File uploaded:", files[0]);
-      // Navigate to first fill page
-      router.push("/fill/1");
+      handleCustomFileUpload(files[0]);
     }
+    // Clear the input value to allow re-uploading the same file
+    e.target.value = "";
   };
 
   const getDifficultyColor = (difficulty) => {
@@ -287,30 +367,62 @@ export default function Home() {
                 onChange={handleFileInput}
                 className="hidden"
                 id="pdf-upload"
+                disabled={uploading}
               />
-              <label htmlFor="pdf-upload" className="cursor-pointer">
+              <label
+                htmlFor="pdf-upload"
+                className={uploading ? "cursor-not-allowed" : "cursor-pointer"}
+              >
                 <div className="mx-auto w-16 h-16 bg-blue-900/50 rounded-full flex items-center justify-center mb-4">
-                  <svg
-                    className="w-8 h-8 text-blue-600"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                    />
-                  </svg>
+                  {uploading ? (
+                    <svg
+                      className="w-8 h-8 text-blue-600 animate-spin"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
+                    </svg>
+                  ) : (
+                    <svg
+                      className="w-8 h-8 text-blue-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                      />
+                    </svg>
+                  )}
                 </div>
                 <h4 className="text-xl font-semibold text-foreground-custom mb-2">
-                  Drop your PDF here or click to browse
+                  {uploading
+                    ? "Uploading..."
+                    : "Drop your PDF here or click to browse"}
                 </h4>
                 <p className="text-secondary-custom mb-4">
                   Supports PDF files up to 10MB
                 </p>
-                <div className="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <div
+                  className={`inline-flex items-center px-6 py-3 ${
+                    uploading ? "bg-gray-600" : "bg-blue-600 hover:bg-blue-700"
+                  } text-white rounded-lg transition-colors`}
+                >
                   <svg
                     className="w-5 h-5 mr-2"
                     fill="none"
@@ -324,7 +436,7 @@ export default function Home() {
                       d="M12 6v6m0 0v6m0-6h6m-6 0H6"
                     />
                   </svg>
-                  Choose File
+                  {uploading ? "Uploading..." : "Choose File"}
                 </div>
               </label>
             </div>
@@ -343,17 +455,17 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="space-y-12 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {formCategories.map((category) => (
               <div
                 key={category.id}
-                className="bg-card-custom rounded-2xl shadow-lg p-8"
+                className="bg-card-custom rounded-2xl shadow-lg p-6"
               >
-                <div className="text-center mb-8">
-                  <h4 className="text-2xl font-bold text-foreground-custom mb-3">
+                <div className="text-center mb-6">
+                  <h4 className="text-xl font-bold text-foreground-custom mb-2">
                     {category.title}
                   </h4>
-                  <p className="text-secondary-custom text-lg">
+                  <p className="text-secondary-custom text-sm">
                     {category.description}
                   </p>
                 </div>
@@ -387,31 +499,59 @@ export default function Home() {
                         onClick={() =>
                           document.getElementById("pdf-upload").click()
                         }
-                        className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                        disabled={uploading}
+                        className={`inline-flex items-center px-6 py-3 ${
+                          uploading
+                            ? "bg-gray-600"
+                            : "bg-blue-600 hover:bg-blue-700"
+                        } text-white rounded-lg transition-colors font-medium`}
                       >
-                        <svg
-                          className="w-5 h-5 mr-2"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                          />
-                        </svg>
-                        Upload I-20 Form
+                        {uploading ? (
+                          <svg
+                            className="w-5 h-5 mr-2 animate-spin"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            ></circle>
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                            ></path>
+                          </svg>
+                        ) : (
+                          <svg
+                            className="w-5 h-5 mr-2"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                            />
+                          </svg>
+                        )}
+                        {uploading ? "Uploading..." : "Upload I-20 Form"}
                       </button>
                     </div>
                   </div>
                 ) : (
                   // Regular form categories
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 gap-4">
                     {category.forms.map((form) => (
                       <div
                         key={form.id}
+                        onClick={() => handleDefaultFormClick(form)}
                         className="form-card rounded-xl p-6 transition-all duration-200 cursor-pointer hover:scale-105"
                       >
                         <div className="flex justify-between items-start mb-4">
@@ -450,12 +590,9 @@ export default function Home() {
                             </svg>
                             {form.estimatedTime}
                           </div>
-                          <button
-                            onClick={() => router.push("/fill/1")}
-                            className="text-blue-400 hover:text-blue-300 font-medium text-sm transition-colors"
-                          >
+                          <span className="text-blue-400 font-medium text-sm">
                             Start Form →
-                          </button>
+                          </span>
                         </div>
                       </div>
                     ))}

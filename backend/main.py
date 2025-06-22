@@ -1,7 +1,11 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, File, UploadFile, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import uvicorn
+import os
+import shutil
+import uuid
+import json
 import requests
 from dotenv import load_dotenv
 import os
@@ -15,16 +19,24 @@ logger = logging.getLogger(__name__)
 
 load_dotenv()
 
+
 app = FastAPI()
 
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],  # Frontend URLs
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+language = "en"
+file_name = "form.pdf"
+default_form = False
+
+# Create upload directory
+os.makedirs("uploads", exist_ok=True)
 
 VAPI_API_URL = "https://api.vapi.ai/assistant"
 VAPI_API_KEY = os.getenv("VAPI_API_KEY")
@@ -80,7 +92,76 @@ class AssistantUpdateRequest(BaseModel):
 
 @app.get("/")
 def read_root():
-    return {"message": "Hello, FastAPI!"}
+    return {"language": language, "file_name": file_name, "default_form": default_form}
+
+@app.post("/upload")
+async def upload_file(file: UploadFile = File(...)):
+    # Use original filename
+    filename = file.filename
+    file_path = f"uploads/{filename}"
+    
+    # Save file
+    with open(file_path, "wb") as buffer:
+        shutil.copyfileobj(file.file, buffer)
+    
+    return {
+        "message": "File uploaded successfully"
+    }
+
+@app.post("/process")
+async def process_form(request: Request):
+    global language, file_name, default_form
+    data = await request.json()
+    language = data.get("language", "en")
+    file_name = data.get("file_name", "form.pdf")
+    default_form = data.get("default_form", False)
+
+    return {
+        "message": "Form processed successfully"
+    }
+
+@app.get("/fill/{page_id}")
+def get_page_info(page_id: str):
+    # Default form fields - in a real app, this could be determined by the uploaded PDF
+    form_fields = [
+        {
+            "id": 1,
+            "field": "First Name",
+            "description": "Please provide your first name as it appears on your official documents.",
+            "type": "text",
+            "required": True,
+        },
+        {
+            "id": 2,
+            "field": "Middle Name",
+            "description": "Please provide your middle name as it appears on your official documents.",
+            "type": "text",
+            "required": False,
+        },
+        {
+            "id": 3,
+            "field": "Last Name",
+            "description": "Please provide your last name as it appears on your official documents.",
+            "type": "text",
+            "required": True,
+        },
+    ]
+    
+    try:
+        page_num = int(page_id)
+        if page_num < 1 or page_num > len(form_fields):
+            raise HTTPException(status_code=404, detail="Page not found")
+        
+        current_field = form_fields[page_num - 1]
+        
+        return {
+            "current_field": current_field,
+            "total_pages": len(form_fields),
+            "current_page": page_num,
+            "progress": (page_num / len(form_fields)) * 100
+        }
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid page ID")
 
 # Update the Vapi Assistant to help with the specific section of the form
 @app.patch("/assistant/{assistant_id}")
