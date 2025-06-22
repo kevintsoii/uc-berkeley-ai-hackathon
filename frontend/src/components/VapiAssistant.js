@@ -92,7 +92,6 @@ const VapiAssistant = ({
         body: JSON.stringify({
           language: language,
           heading: heading,
-          form_type: formType
         })
       });
 

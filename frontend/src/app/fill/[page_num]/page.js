@@ -24,6 +24,9 @@ export default function FillPage() {
   const [error, setError] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [isFinishing, setIsFinishing] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
+  const [isProcessingPdf, setIsProcessingPdf] = useState(true);
+  const [reviewData, setReviewData] = useState(null);
   useTheme(); // Initialize dark mode
 
   // Default form type - in a real app, this would be determined by the uploaded PDF
@@ -126,6 +129,23 @@ export default function FillPage() {
     }
   };
 
+  // Fetch form review from Gemini
+  const fetchFormReview = async () => {
+    try {
+      const response = await fetch("http://localhost:8000/review");
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      console.log("Form review received:", data);
+      setReviewData(data);
+      setIsProcessingPdf(false);
+    } catch (error) {
+      console.error("Error fetching form review:", error);
+      setIsProcessingPdf(false);
+    }
+  };
+
   // Handle escape key for modal
   useEffect(() => {
     const handleEscape = (e) => {
@@ -152,20 +172,47 @@ export default function FillPage() {
       await saveFieldValue(fieldValue);
     }
 
-    // Trigger progress animation
+    // Check if this is the last page (Complete button)
+    if (pageNum === pageInfo?.total_pages) {
+      setIsFinishing(true);
+      try {
+        const response = await fetch("http://localhost:8000/finish", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Form finished successfully:", data);
+
+        // Set finished state to show completion screen
+        setIsFinished(true);
+
+        // Start the review process
+        fetchFormReview();
+      } catch (error) {
+        console.error("Error finishing form:", error);
+        setError("Failed to complete form. Please try again.");
+      } finally {
+        setIsFinishing(false);
+      }
+      return;
+    }
+
+    // Trigger progress animation for regular navigation
     setIsProgressing(true);
 
     // Delay navigation to show animation
     setTimeout(() => {
-      if (pageNum < pageInfo?.total_pages) {
-        const nextPage = pageNum + 1;
-        setPageNum(nextPage);
-        // Update URL without triggering navigation
-        window.history.replaceState(null, "", `/fill/${nextPage}`);
-      } else {
-        // Redirect to completion page or summary
-        router.push("/complete");
-      }
+      const nextPage = pageNum + 1;
+      setPageNum(nextPage);
+      // Update URL without triggering navigation
+      window.history.replaceState(null, "", `/fill/${nextPage}`);
     }, 300);
   };
 
@@ -194,6 +241,113 @@ export default function FillPage() {
           <p className="mt-4 text-foreground-custom">
             Loading page information...
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isFinishing) {
+    return (
+      <div className="min-h-screen bg-gradient-custom flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500 mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isFinished) {
+    return (
+      <div className="min-h-screen bg-gradient-custom">
+        <div className="flex h-screen">
+          {/* Left side - PDF Embed */}
+          <div className="w-1/2 p-4">
+            <div className="h-full bg-white rounded-lg shadow-lg">
+              <iframe
+                src="http://localhost:8000/finished.pdf"
+                className="w-full h-full rounded-lg"
+                title="Finished Form PDF"
+              />
+            </div>
+          </div>
+
+          {/* Right side - Success message and loading */}
+          <div className="w-1/2 flex flex-col items-center justify-center p-8">
+            <div className="text-center">
+              <div className="flex items-center justify-center mb-8">
+                <div className="w-8 h-8 mr-3 bg-green-500 rounded-full flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={3}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                </div>
+                <h1 className="text-2xl font-bold text-foreground-custom">
+                  Form Completed Successfully!
+                </h1>
+              </div>
+
+              {/* Loading spinner or review results */}
+              {isProcessingPdf && (
+                <div className="mb-8 flex flex-col items-center justify-center">
+                  <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-blue-500 mx-auto"></div>
+                  <p className="mt-4 text-secondary-custom">
+                    Reviewing your finished form...
+                  </p>
+                </div>
+              )}
+
+              {!isProcessingPdf && reviewData && (
+                <div className="mb-8 p-6 bg-card-custom rounded-xl border border-custom">
+                  <div className="text-center mb-4">
+                    <div className="text-3xl font-bold text-foreground-custom">
+                      {reviewData.score}/100 {' '}
+                      {reviewData.score >= 90 ? '🌟' : 
+                       reviewData.score >= 80 ? '✨' :
+                       reviewData.score >= 70 ? '👍' :
+                       reviewData.score >= 60 ? '😐' :
+                       '⚠️'}
+                    </div>
+                  </div>
+
+                  <div className="text-center mb-4">
+                    <p className="text-foreground-custom">
+                      {reviewData.review}
+                    </p>
+                  </div>
+
+                  {reviewData.improvements &&
+                    reviewData.improvements.length > 0 && (
+                      <div className="mt-4">
+                        <ul className="text-sm text-secondary-custom space-y-1">
+                          {reviewData.improvements.map((improvement, index) => (
+                            <li key={index} className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>{improvement}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                </div>
+              )}
+
+              <button
+                onClick={() => router.push("/")}
+                className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+              >
+                Return to Home
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );

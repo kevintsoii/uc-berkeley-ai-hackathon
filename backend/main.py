@@ -1,5 +1,7 @@
 from fastapi import FastAPI, HTTPException, File, UploadFile, Request, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 import uvicorn
 import os
@@ -101,7 +103,7 @@ LANGUAGE_MAPPING = {
 class AssistantUpdateRequest(BaseModel):
     language: str
     heading: str
-    form_type: str
+    form_type: str = file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')
 
 class LanguageUpdateRequest(BaseModel):
     language: str
@@ -155,6 +157,89 @@ async def finish_form():
     return {
         "message": "Form finished successfully"
     }
+
+@app.get("/finished.pdf")
+async def get_finished_pdf():
+    """Serve the finished PDF file"""
+    if not os.path.exists("finished.pdf"):
+        raise HTTPException(status_code=404, detail="Finished PDF not found")
+    
+    return FileResponse(
+        path="finished.pdf",
+        media_type="application/pdf",
+        filename="finished.pdf",
+        headers={"Content-Disposition": "inline; filename=finished.pdf"}
+    )
+
+class ReviewResponse(BaseModel):
+    score: int
+    review: str
+    improvements: list[str]
+
+@app.get("/review")
+async def get_form_review():
+    """Generate a review of the finished form using Gemini"""
+    if not os.path.exists("finished.pdf"):
+        raise HTTPException(status_code=404, detail="Finished PDF not found")
+    
+    try:
+        # Read and encode the PDF file
+        with open("finished.pdf", "rb") as pdf_file:
+            pdf_data = pdf_file.read()
+            pdf_base64 = base64.b64encode(pdf_data).decode('utf-8')
+        
+        # Create the prompt for Gemini
+        prompt = """
+        Please review this completed form and provide:
+        1. A score out of 100 based on completeness, accuracy, and overall quality
+        2. A brief review stating whether the form is good or not (2-3 sentences)
+        3. 0-3 bullet points of possible improvements (only include if there are clear issues)
+        
+        Please respond in JSON format with exactly these keys:
+        {
+            "score": <number>,
+            "review": "<brief review text>",
+            "improvements": ["<improvement 1>", "<improvement 2>", "<improvement 3>"]
+        }
+        
+        If there are no improvements needed, use an empty array for improvements.
+        """
+        
+        # Send to Gemini
+        response = client.models.generate_content(
+            model='gemini-2.0-flash-exp',
+            contents=[
+                types.Content(
+                    role="user",
+                    parts=[
+                        types.Part.from_text(text=prompt),
+                        types.Part.from_bytes(
+                            data=pdf_data,
+                            mime_type="application/pdf"
+                        )
+                    ]
+                )
+            ]
+        )
+        
+        # Parse the JSON response
+        review_text = response.text.strip()
+        # Remove any markdown formatting if present
+        if review_text.startswith("```json"):
+            review_text = review_text.replace("```json", "").replace("```", "").strip()
+        
+        review_data = json.loads(review_text)
+        
+        return ReviewResponse(
+            score=review_data["score"],
+            review=review_data["review"],
+            improvements=review_data["improvements"]
+        )
+        
+    except Exception as e:
+        logger.error(f"Error generating form review: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Failed to generate review: {str(e)}")
+    
 
 @app.post("/process")
 async def process_form(request: Request, background_tasks: BackgroundTasks):
@@ -330,7 +415,7 @@ def save_field_value(page_id: str, request: FieldValueRequest):
 @app.patch("/assistant/{assistant_id}")
 def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
     try:
-        logger.info(f"Updating assistant {assistant_id} with language: {request.language}, heading: {request.heading}, form_type: {request.form_type}")
+        logger.info(f"Updating assistant {assistant_id} with language: {request.language}, heading: {request.heading}")
         
         # Check if API key is available
         if not VAPI_API_KEY:
@@ -368,7 +453,7 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
                 "systemPrompt": f'''
                         You are a multilingual, empathetic, and knowledgeable AI voice assistant that helps immigrants understand and complete U.S. immigration forms. 
                         You provide clear, step-by-step support in the user's preferred language, using simple and culturally respectful language.
-                        You are currently helping the user understand and fill out the {request.form_type} form.
+                        You are currently helping the user understand and fill out the {file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')} form.
                         You are currently helping the user with the section: {request.heading}.
                         '''
             },
@@ -376,7 +461,7 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
             "endCallMessage": "Have a great day! Let me know if you need any more help.",
             "firstMessageMode": "assistant-speaks-first",
             "maxDurationSeconds": 43200, 
-            "silenceTimeoutSeconds": 30,
+            "silenceTimeoutSeconds": 180,
             "startSpeakingPlan": {
                 "waitSeconds": 0
             }   
