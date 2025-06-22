@@ -330,7 +330,7 @@ def save_field_value(page_id: str, request: FieldValueRequest):
 @app.patch("/assistant/{assistant_id}")
 def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
     try:
-        logger.info(f"Updating assistant {assistant_id} with language: {request.language}, heading: {request.heading}, form_type: {request.form_type}")
+        logger.info(f"Updating assistant {assistant_id} with language: {request.language}, heading: {request.heading}")
         
         # Check if API key is available
         if not VAPI_API_KEY:
@@ -368,7 +368,7 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
                 "systemPrompt": f'''
                         You are a multilingual, empathetic, and knowledgeable AI voice assistant that helps immigrants understand and complete U.S. immigration forms. 
                         You provide clear, step-by-step support in the user's preferred language, using simple and culturally respectful language.
-                        You are currently helping the user understand and fill out the {request.form_type} form.
+                        You are currently helping the user understand and fill out the {file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')} form.
                         You are currently helping the user with the section: {request.heading}.
                         '''
             },
@@ -376,7 +376,7 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
             "endCallMessage": "Have a great day! Let me know if you need any more help.",
             "firstMessageMode": "assistant-speaks-first",
             "maxDurationSeconds": 43200, 
-            "silenceTimeoutSeconds": 30,
+            "silenceTimeoutSeconds": 180,
             "startSpeakingPlan": {
                 "waitSeconds": 0
             }   

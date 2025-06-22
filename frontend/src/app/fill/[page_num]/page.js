@@ -24,6 +24,7 @@ export default function FillPage() {
   const [error, setError] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState("en");
   const [isFinishing, setIsFinishing] = useState(false);
+  const [isFinished, setIsFinished] = useState(false);
   useTheme(); // Initialize dark mode
 
   // Default form type - in a real app, this would be determined by the uploaded PDF
@@ -152,20 +153,44 @@ export default function FillPage() {
       await saveFieldValue(fieldValue);
     }
 
-    // Trigger progress animation
+    // Check if this is the last page (Complete button)
+    if (pageNum === pageInfo?.total_pages) {
+      setIsFinishing(true);
+      try {
+        const response = await fetch("http://localhost:8000/finish", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Form finished successfully:", data);
+
+        // Set finished state to show completion screen
+        setIsFinished(true);
+      } catch (error) {
+        console.error("Error finishing form:", error);
+        setError("Failed to complete form. Please try again.");
+      } finally {
+        setIsFinishing(false);
+      }
+      return;
+    }
+
+    // Trigger progress animation for regular navigation
     setIsProgressing(true);
 
     // Delay navigation to show animation
     setTimeout(() => {
-      if (pageNum < pageInfo?.total_pages) {
-        const nextPage = pageNum + 1;
-        setPageNum(nextPage);
-        // Update URL without triggering navigation
-        window.history.replaceState(null, "", `/fill/${nextPage}`);
-      } else {
-        // Redirect to completion page or summary
-        router.push("/complete");
-      }
+      const nextPage = pageNum + 1;
+      setPageNum(nextPage);
+      // Update URL without triggering navigation
+      window.history.replaceState(null, "", `/fill/${nextPage}`);
     }, 300);
   };
 
@@ -194,6 +219,54 @@ export default function FillPage() {
           <p className="mt-4 text-foreground-custom">
             Loading page information...
           </p>
+        </div>
+      </div>
+    );
+  }
+
+  if (isFinishing) {
+    return (
+      <div className="min-h-screen bg-gradient-custom flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-green-500 mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (isFinished) {
+    return (
+      <div className="min-h-screen bg-gradient-custom flex items-center justify-center">
+        <div className="text-center">
+          <div className="mb-8">
+            <div className="w-32 h-32 mx-auto mb-6 bg-green-500 rounded-full flex items-center justify-center">
+              <svg
+                className="w-16 h-16 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={3}
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h1 className="text-4xl font-bold text-foreground-custom mb-4">
+              Form Completed Successfully!
+            </h1>
+            <p className="text-xl text-secondary-custom mb-8">
+              Your form has been processed and submitted.
+            </p>
+            <button
+              onClick={() => router.push("/")}
+              className="px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+            >
+              Return to Home
+            </button>
+          </div>
         </div>
       </div>
     );
