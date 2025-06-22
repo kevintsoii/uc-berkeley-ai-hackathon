@@ -200,7 +200,7 @@ export default function FillPage() {
       />
 
       {/* Main Content */}
-      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 mt-6">
         <div className="bg-card-custom rounded-2xl shadow-lg p-8 w-2xl max-w-2xl mx-auto">
           {/* Field Header */}
           <div className="text-center mb-8">
@@ -210,7 +210,7 @@ export default function FillPage() {
                 <span className="text-red-500 ml-1">*</span>
               )}
             </h2>
-            <p className="text-secondary-custom">
+            <p className="text-secondary-custom text-md">
               {pageInfo.current_field.description}
             </p>
           </div>
@@ -272,7 +272,7 @@ export default function FillPage() {
           {/* Next Button */}
           <button
             onClick={handleNext}
-            className="flex items-center justify-center space-x-3 text-center w-52 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="flex items-center justify-center space-x-3 text-center w-52 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg mt-12 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <span>
               {pageNum === pageInfo.total_pages ? "Complete" : "Next Field"}
@@ -293,7 +293,7 @@ export default function FillPage() {
           </button>
         </div>
         {/* Helper Text */}
-        <div className="text-center mt-6">
+        <div className="text-center mt-12">
           <p className="text-sm text-secondary-custom">
             Having trouble? Use the voice assistant button above for detailed
             guidance on this field.
