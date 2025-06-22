@@ -42,6 +42,7 @@ file_name = "form.pdf"
 default_form = False
 processing = False
 form_fields = []
+activated_assistant = False
 
 # Create upload directory
 os.makedirs("uploads", exist_ok=True)
@@ -304,6 +305,12 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
         language_name = LANGUAGE_MAPPING.get(request.language.lower(), "English")
         logger.info(f"Converted language code '{request.language}' to '{language_name}'")
         
+        if not globals().get('activated_assistant', False):
+            first_message_template = "Hello! I am Bridge, your immigration form assistant. What did you want me to explain?"
+            globals()['activated_assistant'] = True
+        else: 
+            first_message_template = "How can I help you?"
+        
         # Translate the first message to the user's language
         print(file_name)
         first_message_template = f"Hello! I am Bridge, your immigration form assistant. I see that you are filling out the {request.heading} section of the {file_name.replace('.pdf', '').replace('uploads/', '').replace('forms/defualt/', '')} form. What did you want me to explain?"
@@ -333,7 +340,10 @@ def update_assistant(assistant_id: str, request: AssistantUpdateRequest):
             "endCallMessage": "Have a great day! Let me know if you need any more help.",
             "firstMessageMode": "assistant-speaks-first",
             "maxDurationSeconds": 43200, 
-            "silenceTimeoutSeconds": 30   
+            "silenceTimeoutSeconds": 30,
+            "startSpeakingPlan": {
+                "waitSeconds": 0
+            }   
         }
 
         headers = {
