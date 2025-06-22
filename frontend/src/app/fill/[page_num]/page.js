@@ -11,7 +11,7 @@ import VapiAssistant from "@/components/VapiAssistant";
 export default function FillPage() {
   const router = useRouter();
   const params = useParams();
-  const pageNum = parseInt(params.page_num);
+  const [pageNum, setPageNum] = useState(parseInt(params.page_num));
 
   const [fieldValue, setFieldValue] = useState("");
   const [isListening, setIsListening] = useState(false);
@@ -74,6 +74,7 @@ export default function FillPage() {
     const fetchPageInfo = async () => {
       try {
         setLoading(true);
+        setError(null); // Clear previous errors
         const response = await fetch(`http://localhost:8000/fill/${pageNum}`);
         if (!response.ok) {
           if (response.status === 404) {
@@ -84,16 +85,19 @@ export default function FillPage() {
         }
         const data = await response.json();
         setPageInfo(data);
+        // Clear field value when moving to a new page
+        setFieldValue("");
       } catch (err) {
         console.error("Error fetching page info:", err);
         setError(err.message);
       } finally {
         setLoading(false);
+        setIsProgressing(false); // Reset progress state
       }
     };
 
     fetchPageInfo();
-  }, [pageNum, router]);
+  }, [pageNum]);
 
   const handleVoiceAssistant = () => {
     setIsListening(!isListening);
@@ -130,13 +134,6 @@ export default function FillPage() {
     );
   };
 
-  // Redirect if page number is invalid - now handled by backend
-  useEffect(() => {
-    if (error && error.includes("404")) {
-      router.push("/fill/1");
-    }
-  }, [error, router]);
-
   // Handle escape key for modal
   useEffect(() => {
     const handleEscape = (e) => {
@@ -164,7 +161,10 @@ export default function FillPage() {
     // Delay navigation to show animation
     setTimeout(() => {
       if (pageNum < pageInfo?.total_pages) {
-        router.push(`/fill/${pageNum + 1}`);
+        const nextPage = pageNum + 1;
+        setPageNum(nextPage);
+        // Update URL without triggering navigation
+        window.history.replaceState(null, "", `/fill/${nextPage}`);
       } else {
         // Redirect to completion page or summary
         router.push("/complete");
@@ -174,11 +174,14 @@ export default function FillPage() {
 
   const handlePrevious = () => {
     if (pageNum > 1) {
-      router.push(`/fill/${pageNum - 1}`);
+      const prevPage = pageNum - 1;
+      setPageNum(prevPage);
+      // Update URL without triggering navigation
+      window.history.replaceState(null, "", `/fill/${prevPage}`);
     }
   };
 
-  if (loading) {
+  if (loading && pageNum < 1) {
     return (
       <div className="min-h-screen bg-gradient-custom flex items-center justify-center">
         <div className="text-center">
@@ -223,7 +226,7 @@ export default function FillPage() {
 
       {/* Main Content */}
       <main className="flex-1 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-card-custom rounded-2xl shadow-lg p-8 max-w-2xl mx-auto">
+        <div className="bg-card-custom rounded-2xl shadow-lg p-8 w-2xl max-w-2xl mx-auto">
           {/* Field Header */}
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-foreground-custom mb-2">
@@ -234,9 +237,6 @@ export default function FillPage() {
             </h2>
             <p className="text-secondary-custom">
               {pageInfo.current_field.description}
-              {!pageInfo.current_field.required && (
-                <span className="text-gray-400 ml-2">(Optional)</span>
-              )}
             </p>
           </div>
 
@@ -293,7 +293,7 @@ export default function FillPage() {
           {pageNum > 1 && (
             <button
               onClick={handlePrevious}
-              className="flex items-center space-x-3 px-6 py-3 border border-custom rounded-xl hover:bg-gray-800 transition-all duration-200 text-foreground-custom"
+              className="flex items-center justify-center w-52 space-x-3 px-6 py-3 border border-custom rounded-xl hover:bg-gray-800 transition-all duration-200 text-foreground-custom"
             >
               <svg
                 className="w-5 h-5"
@@ -315,12 +315,10 @@ export default function FillPage() {
           {/* Next Button */}
           <button
             onClick={handleNext}
-            className="flex items-center space-x-3 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="flex items-center justify-center space-x-3 text-center w-52 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-200 font-medium text-lg shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             <span>
-              {pageNum === pageInfo.total_pages
-                ? "Complete Form"
-                : "Next Field"}
+              {pageNum === pageInfo.total_pages ? "Complete" : "Next Field"}
             </span>
             <svg
               className="w-6 h-6"
